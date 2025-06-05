@@ -1,10 +1,10 @@
 import './App.css';
-import Button from './components/Button';
+import Hero from './components/Hero';
 
 function App() {
   return (
     <div>
-      <Button label="Save" variant="other" onClick={() => console.log('Saved')}/>
+      <Hero />
     </div>
   );
 }
