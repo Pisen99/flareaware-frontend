@@ -1,10 +1,19 @@
 import React from "react";
 
-function Button() {
+function Button({ label, variant, onClick }) {
+    const btnDefault = "w-full sm:w-auto px-4 py-2 rounded-xl font-semibold transition text-center";
+
+    const variants = {
+        primary: "bg-blue-600 text-white hover:bg-blue-700",
+        secondary: "bg-gray-300 text-black hover:bg-gray-400",
+        other: "bg-red-500 text-white hover:bg-red-600",
+    };
+
+    const btnClasses = `${btnDefault} ${variants[variant]}`;
 
     return (
         <div>
-            <button className="p-4 bg-amber-300">test</button>
+            <button onClick={onClick} className={btnClasses}>{label}</button>
         </div>
     )
 }
