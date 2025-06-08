@@ -14,10 +14,10 @@ function Hero() {
             }}
         >
             <div className="min-h-[50vh] flex flex-col items-center justify-end gap-4">
-                <h1 className="text-4xl">
+                <h1 className="text-4xl font-bold text-beige">
                     FlareAware
                 </h1>
-                <p className="text-xl">
+                <p className="text-xl text-beige">
                     Track, Manage & Take Control
                 </p>
             </div>

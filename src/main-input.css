@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+@theme {
+    --color-beige: oklch(0.9636 0.0328 107);
+}
