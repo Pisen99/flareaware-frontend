@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 import img from "../assets/img/flareaware-bg.png";
+import Icons from "./Icons";
 
 function Hero() {
 
@@ -21,8 +22,9 @@ function Hero() {
                     Track, Manage & Take Control
                 </p>
             </div>
-            <div className="min-h-[50vh] flex flex-col items-center justify-end p-4">
-                <Button label="Get Started" variant="primary" onClick={() => console.log("Clicked")}/>
+            <div className="min-h-[50vh] flex flex-col items-center justify-end p-4 gap-4">
+                <p className="text-lg text-beige">Get Started</p>
+                <Button label={Icons.arrowDown} variant="primary" onClick={() => console.log("Clicked")}/>
             </div>
         </div>
         </>
