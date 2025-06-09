@@ -14,7 +14,10 @@ function HeaderTypeAnimation() {
             wrapper="span"
             speed={20}
             cursor={false}
-            className="text-xl text-beige"
+            className="
+            text-xl text-beige
+            md:text-4xl
+            "
             repeat={0}
         >
         </TypeAnimation>

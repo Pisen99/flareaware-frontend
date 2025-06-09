@@ -10,7 +10,11 @@ function Header() {
         <>
         <div style={Images.header} className="min-h-screen flex flex-col items-center justify-center">
             <div className="min-h-[50vh] flex flex-col items-center justify-end gap-4">
-                <h1 className="text-4xl font-bold text-beige">
+                <h1 className="
+                    text-4xl font-bold text-beige
+                    md:text-8xl
+                    "
+                >
                     FlareAware
                 </h1>
                 <HeaderTypeAnimation />
