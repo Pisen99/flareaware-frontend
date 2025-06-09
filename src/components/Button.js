@@ -5,8 +5,8 @@ function Button({ label, variant, onClick }) {
 
     const variants = {
         primary: "text-beige animate-bounce text-3xl",
-        secondary: " bg-gray-300 text-black hover:bg-gray-400",
-        other: "rounded-xl bg-red-500 text-white hover:bg-red-600",
+        secondary: "bg-gray-300 text-black hover:bg-gray-400",
+        other: "bg-red-500 text-white hover:bg-red-600",
     };
 
     const btnClasses = `${btnDefault} ${variants[variant]}`;
@@ -16,6 +16,6 @@ function Button({ label, variant, onClick }) {
             <button onClick={onClick} className={btnClasses}>{label}</button>
         </div>
     )
-}
+};
 
 export default Button;
