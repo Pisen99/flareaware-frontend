@@ -1,12 +1,12 @@
 import './App.css';
-import FoodLog from './components/FoodLog';
 import Header from './components/Header';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div>
       <Header />
-      <FoodLog />
+      <Navbar />
     </div>
   );
 }
