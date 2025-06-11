@@ -298,6 +298,9 @@
   .h-full {
     height: 100%;
   }
+  .h-screen {
+    height: 100vh;
+  }
   .min-h-\[3vh\] {
     min-height: 3vh;
   }
@@ -342,6 +345,12 @@
   }
   .max-w-7xl {
     max-width: var(--container-7xl);
+  }
+  .flex-initial {
+    flex: 0 auto;
+  }
+  .flex-grow {
+    flex-grow: 1;
   }
   .border-collapse {
     border-collapse: collapse;
@@ -657,6 +666,11 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-transform {
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -665,6 +679,24 @@
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
+  }
+  .duration-1000 {
+    --tw-duration: 1000ms;
+    transition-duration: 1000ms;
+  }
+  .hover\:row-span-2 {
+    &:hover {
+      @media (hover: hover) {
+        grid-row: span 2 / span 2;
+      }
+    }
+  }
+  .hover\:grow {
+    &:hover {
+      @media (hover: hover) {
+        flex-grow: 1;
+      }
+    }
   }
   .hover\:border {
     &:hover {
