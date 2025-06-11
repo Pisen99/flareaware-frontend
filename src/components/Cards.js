@@ -8,21 +8,21 @@ function Cards() {
     // Creating an Array w Objects for menu items
     const menuItems = [
         {
-            title: "Bowel Log",
+            title: "",
             bgImg: Images.navbar.bowelLog,
-            about: "Track your bowel movements",
-            symbols: Icons.symbols.add
+            about: "Bowel symptoms",
+            symbols: <Button label={Icons.symbols.add} variant="secondary" onClick={() => console.log("Clicked add")} />
         },
         {
-            title: "Food Log",
+            title: "",
             bgImg: Images.navbar.foodLog,
-            about: "Log your meals & triggers",
-            symbols: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked")} />
+            about: "Log meals",
+            symbols: ""
         },
         {
             title: "Other",
             bgImg: Images.navbar.other,
-            about: "Notes, symptoms, medications, and anything else you need",
+            about: "",
             symbols: ""
         }
     ]
@@ -32,13 +32,13 @@ function Cards() {
             {/* Mapping through menuItems, obj = card, index = counting through each obj in array */}
             {menuItems.map((card, index) => (
                 <div
-                    className="w-full h-full row-span-1"
+                    className="w-full h-full col-span-1"
                     key={index}
                 >
-                    <div style={card.bgImg} className="flex flex-col border-beige shadow-lg border-2 rounded-sm h-full">
-                        <div className="flex flex-col items-center justify-evenly w-full h-full">
-                            <h2 className="uppercase">{card.title}</h2>
-                            <p className="text-center">{card.about}</p>
+                    <div style={card.bgImg} className="flex flex-col border-white shadow-lg border-2 rounded-lg h-full">
+                        <div className="flex flex-col items-center justify-evenly w-full h-full p-2">
+                            <h2 className="uppercase font-varela">{card.title}</h2>
+                            <p className="text-center font-varela">{card.about}</p>
                             {card.symbols}
                         </div>
                     </div>

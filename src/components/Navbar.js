@@ -5,7 +5,7 @@ function Navbar() {
 
     return (
         <>
-            <div className="min-h-screen bg-beige grid grid-flow-row grid-rows-3 items-center gap-2 p-4">
+            <div className="bg-beige grid grid-flow-col grid-cols-3 items-center gap-2 px-2 py-4">
                 <Cards />
             </div>
         </>
