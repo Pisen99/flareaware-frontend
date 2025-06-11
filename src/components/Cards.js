@@ -35,11 +35,11 @@ function Cards() {
                     className="w-full h-full row-span-1"
                     key={index}
                 >
-                    <div style={card.bgImg} className="flex flex-col border-beige shadow-md border-2 rounded-sm h-full">
+                    <div style={card.bgImg} className="flex flex-col border-beige shadow-lg border-2 rounded-sm h-full">
                         <div className="flex flex-col items-center justify-evenly w-full h-full">
                             <h2 className="uppercase">{card.title}</h2>
-                            {card.symbols}
                             <p className="text-center">{card.about}</p>
+                            {card.symbols}
                         </div>
                     </div>
                 </div>
