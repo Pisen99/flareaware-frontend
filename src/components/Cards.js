@@ -1,5 +1,7 @@
 import React from "react";
 import Images from "./Images";
+import Icons from "./Icons";
+import Button from "./Button";
 
 function Cards() {
 
@@ -8,12 +10,12 @@ function Cards() {
         {
             title: "Bowel Log",
             bgImg: Images.navbar.bowelLog,
-            about: ""
+            about: Icons.symbols.add
         },
         {
             title: "Food Log",
             bgImg: Images.navbar.foodLog,
-            about: ""
+            about: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked")} />
         },
         {
             title: "Other",
@@ -33,7 +35,7 @@ function Cards() {
                     <div style={card.bgImg} className="flex flex-col border-beige shadow-md border-2 rounded-sm h-full">
                         <div className="flex flex-col items-center justify-evenly w-full h-full uppercase">
                             <h2>{card.title}</h2>
-                            <p>{card.about}</p>
+                            {card.about}
                         </div>
                     </div>
                 </div>

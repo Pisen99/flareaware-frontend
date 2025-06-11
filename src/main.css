@@ -519,6 +519,9 @@
   .bg-beige {
     background-color: var(--color-beige);
   }
+  .bg-black {
+    background-color: var(--color-black);
+  }
   .bg-gray-300 {
     background-color: var(--color-gray-300);
   }

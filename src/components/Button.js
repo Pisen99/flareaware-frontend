@@ -5,7 +5,7 @@ function Button({ label, variant, onClick }) {
 
     const variants = {
         primary: "text-beige animate-bounce text-3xl",
-        secondary: "bg-gray-300 text-black hover:bg-gray-400",
+        secondary: "text-black animate-pulse text-3xl",
         other: "bg-red-500 text-white hover:bg-red-600",
     };
 
