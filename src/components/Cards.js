@@ -10,17 +10,20 @@ function Cards() {
         {
             title: "Bowel Log",
             bgImg: Images.navbar.bowelLog,
-            about: Icons.symbols.add
+            about: "Track your bowel movements",
+            symbols: Icons.symbols.add
         },
         {
             title: "Food Log",
             bgImg: Images.navbar.foodLog,
-            about: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked")} />
+            about: "Log your meals & triggers",
+            symbols: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked")} />
         },
         {
             title: "Other",
             bgImg: Images.navbar.other,
-            about: ""
+            about: "Notes, symptoms, medications, and anything else you need",
+            symbols: ""
         }
     ]
 
@@ -33,9 +36,10 @@ function Cards() {
                     key={index}
                 >
                     <div style={card.bgImg} className="flex flex-col border-beige shadow-md border-2 rounded-sm h-full">
-                        <div className="flex flex-col items-center justify-evenly w-full h-full uppercase">
-                            <h2>{card.title}</h2>
-                            {card.about}
+                        <div className="flex flex-col items-center justify-evenly w-full h-full">
+                            <h2 className="uppercase">{card.title}</h2>
+                            {card.symbols}
+                            <p className="text-center">{card.about}</p>
                         </div>
                     </div>
                 </div>
