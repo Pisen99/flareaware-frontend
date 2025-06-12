@@ -3,5 +3,6 @@
 
 @theme {
     --color-beige: oklch(0.9636 0.0328 107);
+
     --font-varela: "Varela Round", sans-serif;
 }
