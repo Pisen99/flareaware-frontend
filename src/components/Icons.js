@@ -1,6 +1,7 @@
 import { FaArrowDown } from "react-icons/fa6";
 import { IoIosAddCircle } from "react-icons/io";
 import { FaHeart } from "react-icons/fa";
+import { CiViewList } from "react-icons/ci";
 
 
 
@@ -10,7 +11,8 @@ const Icons = {
     },
     symbols: {
         add: <IoIosAddCircle />,
-        heart: <FaHeart />
+        heart: <FaHeart />,
+        list: <CiViewList />
     }
 };
 

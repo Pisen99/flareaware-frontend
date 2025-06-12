@@ -11,13 +11,13 @@ function Cards() {
             title: "",
             bgImg: Images.navbar.bowelLog,
             about: "Bowel symptoms",
-            symbols: <Button label={Icons.symbols.add} variant="secondary" onClick={() => console.log("Clicked add")} />
+            symbols: <Button label={Icons.symbols.add} variant="secondary" onClick={() => console.log("Clicked 'Bowel symptoms'")} />
         },
         {
-            title: "",
+            title: "Log meals",
             bgImg: Images.navbar.foodLog,
-            about: "Log meals",
-            symbols: ""
+            about: "",
+            symbols: <Button label={Icons.symbols.list} variant="secondary" onClick={() => console.log("Clicked 'Log meals'")}/>
         },
         {
             title: "Other",
@@ -31,13 +31,24 @@ function Cards() {
         <>
             {/* Mapping through menuItems, obj = card, index = counting through each obj in array */}
             {menuItems.map((card, index) => (
-                <div
-                    className="w-full h-full col-span-1"
+                <div 
+                    className="col-span-1 w-full h-full"
                     key={index}
                 >
-                    <div style={card.bgImg} className="flex flex-col border-white shadow-lg border-2 rounded-lg h-full">
-                        <div className="flex flex-col items-center justify-evenly w-full h-full p-2">
-                            <h2 className="uppercase font-varela">{card.title}</h2>
+                    <div 
+                        style={card.bgImg}
+                        className="
+                        flex flex-col
+                        h-full 
+                        border-white border-2 rounded-lg shadow-lg"
+                    >
+                        <div 
+                            className="
+                            flex flex-col items-center justify-evenly
+                            w-full h-full
+                            p-2"
+                        >
+                            <h2 className="text-center font-varela">{card.title}</h2>
                             <p className="text-center font-varela">{card.about}</p>
                             {card.symbols}
                         </div>
