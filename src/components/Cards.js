@@ -2,6 +2,7 @@ import React from "react";
 import Images from "./Images";
 import Icons from "./Icons";
 import Button from "./Button";
+import { useState } from "react";
 
 function Cards() {
 
@@ -17,35 +18,46 @@ function Cards() {
             title: "Log meals",
             bgImg: Images.navbar.foodLog,
             about: "",
-            symbols: <Button label={Icons.symbols.list} variant="secondary" onClick={() => console.log("Clicked 'Log meals'")}/>
+            symbols: <Button label={Icons.symbols.list} variant="secondary" onClick={() => console.log("Clicked 'Log meals'")} />
         },
         {
             title: "Other",
             bgImg: Images.navbar.other,
             about: "",
-            symbols: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked 'Log meals'")}/>
+            symbols: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked 'Other'")} />
         }
     ]
+
+    const [selectedCard, setSelectedCard] = useState();
+    
+    const handleActiveCard = (index) => {
+        console.log(index)
+        setSelectedCard(index)
+    }
 
     return (
         <>
             {/* Mapping through menuItems, obj = card, index = counting through each obj in array */}
             {menuItems.map((card, index) => (
-                <div 
-                    className="
+                <div
+                    onClick={() => handleActiveCard(index)}
+                    className={`
+                    ${selectedCard === index ? "border-red-400" : "border-transparent hover:border-red-400"}
+                    border-2 rounded-xl
                     col-span-1
                     w-full h-full
-                    border-2 border-transparent hover:border-2 hover:rounded-xl hover:border-red-400 md:p-0.5"
+                    md:p-0.5
+                    `}
                     key={index}
                 >
-                    <div 
+                    <div
                         style={card.bgImg}
                         className="
                         flex flex-col
                         h-full 
                         border-white border-2 rounded-lg shadow-lg p-2"
                     >
-                        <div 
+                        <div
                             className="
                             flex flex-col items-center justify-evenly
                             w-full h-full
