@@ -29,7 +29,7 @@ function Cards() {
     ]
 
     const [selectedCard, setSelectedCard] = useState();
-    
+
     const handleActiveCard = (index) => {
         console.log(index)
         setSelectedCard(index)
@@ -42,7 +42,7 @@ function Cards() {
                 <div
                     onClick={() => handleActiveCard(index)}
                     className={`
-                    ${selectedCard === index ? "border-red-400" : "border-transparent hover:border-red-400"}
+                    ${selectedCard === index ? "border-red-400 border-3" : "border-transparent hover:border-red-400"}
                     border-2 rounded-xl
                     col-span-1
                     w-full h-full
@@ -55,7 +55,7 @@ function Cards() {
                         className="
                         flex flex-col
                         h-full 
-                        border-white border-2 rounded-lg shadow-lg p-2"
+                        border-white border-4 rounded-lg shadow-lg p-2"
                     >
                         <div
                             className="
