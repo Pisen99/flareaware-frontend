@@ -1,10 +1,13 @@
 import React from "react";
+import Calendar from "./Calendar";
 
 function FoodLog() {
 
     return (
         <>
-            <div className="min-h-screen flex flex-col items-center justify-center"></div>
+            <div className="bg-beige">
+                <Calendar />
+            </div>
         </>
     )
 };
