@@ -432,6 +432,9 @@
   .border-yellow-300 {
     border-color: var(--color-yellow-300);
   }
+  .bg-amber-300 {
+    background-color: var(--color-amber-300);
+  }
   .bg-amber-500 {
     background-color: var(--color-amber-500);
   }
@@ -455,6 +458,9 @@
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
+  }
+  .bg-transparent {
+    background-color: transparent;
   }
   .bg-white {
     background-color: var(--color-white);
