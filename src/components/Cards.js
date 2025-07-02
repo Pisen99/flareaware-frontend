@@ -42,8 +42,9 @@ function Cards() {
                 <div
                     onClick={() => handleActiveCard(index)}
                     className={`
-                    ${selectedCard === index ? "border-red-400 border-3" : "border-transparent hover:border-red-400"}
-                    border-2 rounded-xl
+                    ${selectedCard === index ? "border-red-400" : "border-transparent"}
+                    border-3 rounded-xl
+                    hover:border-red-400
                     col-span-1
                     w-full h-full
                     md:p-0.5
