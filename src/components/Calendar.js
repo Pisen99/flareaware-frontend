@@ -36,6 +36,7 @@ function Calendar() {
 
     // Determine which day to display as selected (clicked or today)
     const selectedDay = selectedCard !== null ? thisWeek[selectedCard] : thisWeek.find(day => day.currentDay);
+    // console.log(selectedDay);
 
     // Adjust the visible week (back or forward) and update the offset
     const handleWeeks = (direction) => {
@@ -43,12 +44,12 @@ function Calendar() {
     }
 
     return (
-        <>
+        <div className="pb-4">
             {/* Display selected day info with navigation buttons */}
             {selectedDay && (
                 <div className="flex justify-center items-center text-center py-4">
                     <button onClick={() => handleWeeks("back")} className="p-4 text-2xl" >{Icons.arrows.arrowBack}</button>
-                    <strong>{selectedDay.month}: {selectedDay.date}</strong>
+                    <strong className="w-40">{selectedDay.month}: {selectedDay.date}</strong>
                     <button onClick={() => handleWeeks("forward")} className="p-4 text-2xl" >{Icons.arrows.arrowForward}</button>
                 </div>
             )}
@@ -65,7 +66,7 @@ function Calendar() {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
