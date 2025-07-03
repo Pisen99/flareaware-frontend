@@ -1,15 +1,15 @@
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import FoodLog from './components/FoodLog';
+import Calendar from './components/Calendar';
 
 function App() {
-  
+
   return (
-    <div>
+    <div className='bg-beige'>
       <Header />
       <Navbar />
-      <FoodLog />
+      <Calendar />
     </div>
   );
 }

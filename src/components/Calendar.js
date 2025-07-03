@@ -12,8 +12,8 @@ function Calendar() {
     // State to track week offset from current week (0 = current)
     const [weekOffSet, setWeekOffSet] = useState(0);
     // State to track which weekday card is currently selected (defaults to today)
-    const [selectedCard, setSelectedCard] = useState(todayIndex)
-    
+    const [selectedCard, setSelectedCard] = useState(todayIndex);
+
     // Calculate the start of the week based on the offset
     const startOfWeek = moment().startOf("isoWeek").add(weekOffSet, "weeks");
 
@@ -30,8 +30,8 @@ function Calendar() {
 
     // Handle clicking a specific day card
     const handleActiveCard = (index) => {
-        console.log(index)
-        setSelectedCard(index)
+        // console.log(index);
+        setSelectedCard(index);
     }
 
     // Determine which day to display as selected (clicked or today)
@@ -39,7 +39,7 @@ function Calendar() {
 
     // Adjust the visible week (back or forward) and update the offset
     const handleWeeks = (direction) => {
-        setWeekOffSet(prev => prev + (direction === "forward" ? 1 : -1))
+        setWeekOffSet(prev => prev + (direction === "forward" ? 1 : -1));
     }
 
     return (
