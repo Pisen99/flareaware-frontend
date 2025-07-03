@@ -30,7 +30,7 @@ function Calendar() {
                     <strong>{selectedDay.month}: {selectedDay.date}</strong>
                 </div>
             )}
-            <div className="grid grid-flow-col grid-cols-7 text-center overflow-x-auto">
+            <div className="grid grid-flow-col grid-cols-7 text-center">
                 {thisWeek.map((item, index) => (
                     <div key={index}>
                         <div
