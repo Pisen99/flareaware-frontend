@@ -1,15 +1,17 @@
 import React from "react";
 import moment from "moment";
 import { useState } from "react";
+import Icons from "./Icons";
 
 function Calendar() {
     const today = moment();
+    const startOfWeek = moment().startOf("isoWeek");
     const thisWeek = Array.from({ length: 7 }, (_, i) => {
-        const day = moment().startOf("day").add(i, "days");
+        const day = startOfWeek.clone().add(i, "days");
         return {
             day: day.format("ddd")[0], // e.g., Mon
             date: day.date(), // e.g., 28
-            month: day.format("MMM"), // e.g., Jun
+            month: day.format("MMMM"), // e.g., Jun
             currentDay: day.isSame(today, "day")
         }
     })
@@ -26,8 +28,10 @@ function Calendar() {
     return (
         <>
             {selectedDay && (
-                <div className="text-center py-4 text-gray-700 text-sm">
+                <div className="flex justify-center items-center text-center py-4">
+                    <button className="p-4 text-2xl" >{Icons.arrows.arrowBack}</button>
                     <strong>{selectedDay.month}: {selectedDay.date}</strong>
+                    <button className="p-4 text-2xl" >{Icons.arrows.arrowForward}</button>
                 </div>
             )}
             <div className="grid grid-flow-col grid-cols-7 text-center">
