@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import { useState } from "react";
 import Icons from "./Icons";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Calendar() {
     // Get today's date using moment
@@ -13,6 +14,8 @@ function Calendar() {
     const [weekOffSet, setWeekOffSet] = useState(0);
     // State to track which weekday card is currently selected (defaults to today)
     const [selectedCard, setSelectedCard] = useState(todayIndex);
+    // State to track animation direction when changing switching between weeks
+    const [direction, setDirection] = useState("forward");
 
     // Calculate the start of the week based on the offset
     const startOfWeek = moment().startOf("isoWeek").add(weekOffSet, "weeks");
@@ -38,13 +41,16 @@ function Calendar() {
     const selectedDay = selectedCard !== null ? thisWeek[selectedCard] : thisWeek.find(day => day.currentDay);
     // console.log(selectedDay);
 
-    // Adjust the visible week (back or forward) and update the offset
-    const handleWeeks = (direction) => {
+    // Handle week navigation:
+    // - Updates scroll direction for animation
+    // - Adjusts the week offset (moves forward or back by 1 week)
+    const handleWeeks = (dir) => {
+        setDirection(dir);
         setWeekOffSet(prev => prev + (direction === "forward" ? 1 : -1));
     }
 
     return (
-        <div className="pb-4">
+        <div className="py-4">
             {/* Display selected day info with navigation buttons */}
             {selectedDay && (
                 <div className="flex justify-center items-center text-center py-4">
@@ -53,18 +59,28 @@ function Calendar() {
                     <button onClick={() => handleWeeks("forward")} className="p-4 text-2xl" >{Icons.arrows.arrowForward}</button>
                 </div>
             )}
-            {/* Weekday cards */}
-            <div className="grid grid-flow-col grid-cols-7 text-center">
-                {thisWeek.map((item, index) => (
-                    <div key={index}>
-                        <div
-                            onClick={() => handleActiveCard(index)}
-                            className={`border-2 rounded-full px-2 py-4 ${item.currentDay ? "border-blue-600" : "border-transparent"} ${selectedCard === index ? "bg-blue-300" : "bg-blue-400"}`}
-                        >
-                            <p>{item.day}</p>
-                        </div>
-                    </div>
-                ))}
+            {/* Weekday cards w animation */}
+            <div className="relative h-24 overflow-hidden">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={weekOffSet}
+                        initial={{ x: direction === "forward" ? 300 : -300, opacity: 0.5 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                        className="grid grid-flow-col grid-cols-7 text-center"
+                    >
+                        {thisWeek.map((item, index) => (
+                            <div key={index}>
+                                <div
+                                    onClick={() => handleActiveCard(index)}
+                                    className={`border-2 rounded-full px-2 py-4 ${item.currentDay ? "border-blue-600" : "border-transparent"} ${selectedCard === index ? "bg-blue-300" : "bg-blue-400"}`}
+                                >
+                                    <p>{item.day}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </div>
     )
