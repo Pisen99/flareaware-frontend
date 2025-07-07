@@ -64,9 +64,9 @@ function Calendar() {
             {/* Weekday cards w animation */}
             <div 
                 className="
-                relative h-24 overflow-hidden
-                md:px-12
-                lg:px-24
+                overflow-hidden
+                md:px-20
+                lg:px-44
                 "
             >
                 <AnimatePresence mode="wait">
@@ -75,13 +75,20 @@ function Calendar() {
                         initial={{ x: direction === "forward" ? 300 : -300, opacity: 0.5 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.2 }}
-                        className="grid grid-flow-col grid-cols-7 text-center"
+                        className="
+                            grid grid-flow-col grid-cols-7
+                            text-center
+                            gap-x-0.5"
                     >
                         {thisWeek.map((item, index) => (
                             <div key={index}>
                                 <div
                                     onClick={() => handleActiveCard(index)}
-                                    className={`border-2 rounded-full px-2 py-4 ${item.currentDay ? "border-blue-600" : "border-transparent"} ${selectedCard === index ? "bg-blue-300" : "bg-blue-400"}`}
+                                    className={`
+                                        border-2 rounded-full px-2 py-4
+                                        lg:rounded-3xl lg:px-0
+                                        ${item.currentDay ? "border-blue-600" : "border-transparent"}
+                                        ${selectedCard === index ? "bg-blue-300" : "bg-blue-400"}`}
                                 >
                                     <p>
                                         <span className="block sm:hidden">{item.daySM}</span>
