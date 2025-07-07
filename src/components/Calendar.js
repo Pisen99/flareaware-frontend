@@ -24,7 +24,9 @@ function Calendar() {
     const thisWeek = Array.from({ length: 7 }, (_, i) => {
         const day = startOfWeek.clone().add(i, "days");
         return {
-            day: day.format("ddd")[0], // First letter of weekday (e.g., M)
+            daySM: day.format("ddd")[0], // First letter of weekday (e.g., M)
+            dayMD: day.format("ddd"), // First 3 letters of weekday (e.g., Mon)
+            dayLG: day.format("dddd"), // Weekday (e.g., Monday)
             date: day.date(), // Day number (e.g., 28)
             month: day.format("MMMM"), // Full month name (e.g., June)
             currentDay: day.isSame(today, "day") // Marks today's date
@@ -60,7 +62,13 @@ function Calendar() {
                 </div>
             )}
             {/* Weekday cards w animation */}
-            <div className="relative h-24 overflow-hidden">
+            <div 
+                className="
+                relative h-24 overflow-hidden
+                md:px-12
+                lg:px-24
+                "
+            >
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={weekOffSet}
@@ -75,7 +83,11 @@ function Calendar() {
                                     onClick={() => handleActiveCard(index)}
                                     className={`border-2 rounded-full px-2 py-4 ${item.currentDay ? "border-blue-600" : "border-transparent"} ${selectedCard === index ? "bg-blue-300" : "bg-blue-400"}`}
                                 >
-                                    <p>{item.day}</p>
+                                    <p>
+                                        <span className="block sm:hidden">{item.daySM}</span>
+                                        <span className="hidden sm:block lg:hidden">{item.dayMD}</span>
+                                        <span className="hidden lg:block">{item.dayLG}</span>
+                                    </p>
                                 </div>
                             </div>
                         ))}
