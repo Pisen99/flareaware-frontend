@@ -1,7 +1,23 @@
 import React from "react";
 import Icons from "./Icons";
+import moment from "moment";
 
 function CalendarTwo() {
+    const today = moment();
+
+    const startOfWeek = moment().startOf("isoWeek"); // Monday is the first day of isoWeek
+
+    const thisWeek = Array.from({ length: 7, }, (_, index) => {
+        const day = startOfWeek.clone().add(index, "days");
+        return {
+            day: day.format("dd")[0], // Ex: "M"
+            dayLG: day.format("ddd"), // Ex: "Mon"
+            date: day.date(), // Ex: "7" or "28"
+            month: day.format("MMMM"), // Ex: "June"
+            year: day.year(), // Ex: "2025"
+            // currentDay: day.isSame(today, "day")
+        }
+    })
 
     return (
         <>
@@ -14,22 +30,11 @@ function CalendarTwo() {
                 md:py-6
                 lg:gap-24"
             >
-                <button
-                    className="
-                    text-gray-400 text-2xl
-                    md:text-3xl"
-                >
-                    {Icons.arrows.arrowBack}
-                </button>
-                <span className="text-lg md:text-2xl">Monday 7 June</span>
-                <button
-                    className="
-                    text-gray-400 text-2xl
-                    md:text-3xl"
-                >
-                    {Icons.arrows.arrowForward}
-                </button>
+                <button className="text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowBack}</button>
+                <span className="text-lg md:text-2xl lg:text-3xl">Monday 7 June</span>
+                <button className="text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowForward}</button>
             </div>
+
             {/* Container: Calendar */}
             <div
                 className="
@@ -38,26 +43,27 @@ function CalendarTwo() {
                 py-4 px-4
                 md:px-20 md:gap-3
                 lg:mx-32 lg:gap-4">
-
-                {/* Displaying each day of the week */}
-                <div
-                    className="
-                    col-span-1
-                    p-2"
-                >
-                    <p className="text-sm md:text-xl lg:text-2xl">day</p>
+                {thisWeek.map((item, index) => (
+                <div key={index}>
+                    {/* Displaying each day of the week */}
+                    <div
+                        className="
+                        col-span-1
+                        p-2"
+                    >
+                        <p className="text-sm md:text-xl lg:text-2xl">{item.day}</p>
+                    </div>
+                    {/* Symbol will appear when something is added */}
+                    <div
+                        className="
+                        row-start-2
+                        bg-gray-500 border-2 border-gray-600 rounded-full
+                        md:py-0.5"
+                    >
+                    </div>
                 </div>
-
-                {/* Symbol will appear when something is added */}
-                <div
-                    className="
-                    row-start-2
-                    bg-gray-500 border-2 border-gray-600 rounded-full
-                    md:py-0.5"
-                >
-                </div>
+            ))}
             </div>
-
 
             {/* Container: Buttons */}
             <div
