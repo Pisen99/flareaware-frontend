@@ -3,9 +3,9 @@ import Icons from "./Icons";
 import moment from "moment";
 
 function CalendarTwo() {
-    const today = moment();
+    const today = moment(); // Gets today's date using moment
 
-    const startOfWeek = moment().startOf("isoWeek"); // Monday is the first day of isoWeek
+    const startOfWeek = moment().startOf("isoWeek"); // isoWeek order: Monday => Sunday
 
     const thisWeek = Array.from({ length: 7, }, (_, index) => {
         const day = startOfWeek.clone().add(index, "days");
@@ -42,7 +42,9 @@ function CalendarTwo() {
               text-beige text-center 
                 py-4 px-4
                 md:px-20 md:gap-3
-                lg:mx-32 lg:gap-4">
+                lg:mx-32 lg:gap-4"
+            >
+                {/* Mapping to generate calendar */}
                 {thisWeek.map((item, index) => (
                 <div key={index}>
                     {/* Displaying each day of the week */}
@@ -71,7 +73,7 @@ function CalendarTwo() {
                 bg-gray-500 border-2 border-gray-600 rounded-xl
                 p-4 mx-4
                 md:border-4 md:border-gray-600 md:mx-20 md:px-8
-                lg:mx-32 lg:px-16"
+                lg:mx-48 lg:px-16"
             >
             </div>
         </>
