@@ -52,27 +52,31 @@ function CalendarTwo() {
                 md:px-20 md:gap-3
                 lg:mx-32 lg:gap-4"
             >
-                {/* Mapping to generate calendar */}
+                {/* ROW 1: Mapping to generate calendar */}
                 {thisWeek.map((item, index) => (
                     <div 
                         key={index}
                         onClick={() => handleActiveCard(index)}
                     >
-                        {/* Displaying each day of the week */}
-                        <div
-                            className="
-                            col-span-1
-                            p-2"
-                        >
-                            <p className="text-sm md:text-xl lg:text-2xl">{item.day}</p>
-                        </div>
-                        {/* Symbol will appear when something is added */}
+                        {/* Display: Each day of the week */}
                         <div
                             className={`
-                            row-start-2
+                            col-span-1
+                            p-2
+                            text-sm md:text-xl lg:text-2xl
+                            ${selectedCard === index && "font-bold"}
+                            `}
+                            
+                        >
+                            <p>{item.day}</p>
+                        </div>
+                        {/* Display: Handles active card */}
+                        <div
+                            className={`
+                            col-span-1
                             border-2 border-gray-600 rounded-full 
                             py-0.5
-                            ${selectedCard === index ? "bg-white" : "bg-gray-500"}`}
+                            ${selectedCard === index ? "bg-beige" : "bg-gray-500"}`}
                         >
                         </div>
                     </div>
