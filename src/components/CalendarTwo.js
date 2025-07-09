@@ -1,8 +1,16 @@
 import React from "react";
 import Icons from "./Icons";
 import moment from "moment";
+import { useState } from "react";
 
 function CalendarTwo() {
+    const [selectedCard, setSelectedCard] = useState(null) // Used for handling selected card
+
+    // Handles clicked day card
+    const handleActiveCard = (index) => {
+        setSelectedCard(index);
+    }
+
     const today = moment(); // Gets today's date using moment
 
     const startOfWeek = moment().startOf("isoWeek"); // isoWeek order: Monday => Sunday
@@ -46,25 +54,29 @@ function CalendarTwo() {
             >
                 {/* Mapping to generate calendar */}
                 {thisWeek.map((item, index) => (
-                <div key={index}>
-                    {/* Displaying each day of the week */}
-                    <div
-                        className="
-                        col-span-1
-                        p-2"
+                    <div 
+                        key={index}
+                        onClick={() => handleActiveCard(index)}
                     >
-                        <p className="text-sm md:text-xl lg:text-2xl">{item.day}</p>
+                        {/* Displaying each day of the week */}
+                        <div
+                            className="
+                            col-span-1
+                            p-2"
+                        >
+                            <p className="text-sm md:text-xl lg:text-2xl">{item.day}</p>
+                        </div>
+                        {/* Symbol will appear when something is added */}
+                        <div
+                            className={`
+                            row-start-2
+                            border-2 border-gray-600 rounded-full 
+                            py-0.5
+                            ${selectedCard === index ? "bg-white" : "bg-gray-500"}`}
+                        >
+                        </div>
                     </div>
-                    {/* Symbol will appear when something is added */}
-                    <div
-                        className="
-                        row-start-2
-                        bg-gray-500 border-2 border-gray-600 rounded-full
-                        md:py-0.5"
-                    >
-                    </div>
-                </div>
-            ))}
+                ))}
             </div>
 
             {/* Container: Buttons */}
