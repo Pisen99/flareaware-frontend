@@ -4,50 +4,54 @@ import moment from "moment";
 import { useState } from "react";
 
 function CalendarTwo() {
-    const [selectedCard, setSelectedCard] = useState(null) // Used for handling selected card
-
+    const [selectedCard, setSelectedCard] = useState(null); // Used for handling selected card
     // Handles clicked day card
     const handleActiveCard = (index) => {
         setSelectedCard(index);
     }
 
     const today = moment(); // Gets today's date using moment
-
     const startOfWeek = moment().startOf("isoWeek"); // isoWeek order: Monday => Sunday
-
+    // Generate array of 7 days for the current week view
     const thisWeek = Array.from({ length: 7, }, (_, index) => {
         const day = startOfWeek.clone().add(index, "days");
         return {
             day: day.format("dd")[0], // Ex: "M"
+            dayFull: day.format("dddd"),
             dayLG: day.format("ddd"), // Ex: "Mon"
             date: day.date(), // Ex: "7" or "28"
             month: day.format("MMMM"), // Ex: "June"
             year: day.year(), // Ex: "2025"
-            // currentDay: day.isSame(today, "day")
+            currentDay: day.isSame(today, "day")
         }
     })
+
+    const selectedDay = selectedCard !== null ? thisWeek[selectedCard] : thisWeek.find(day => day.currentDay);
 
     return (
         <>
             {/* Displaying exact date of each day clicked or default current day */}
-            <div
-                className="
-                flex flex-row justify-center gap-8
-                text-beige
-                py-4
-                md:py-6
-                lg:gap-24"
-            >
-                <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowBack}</button>
-                <span className="text-lg md:text-2xl lg:text-3xl">Monday 7 June</span>
-                <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowForward}</button>
-            </div>
+            {selectedDay && (
+                <div
+                    className="
+                    flex flex-row justify-center text-center gap-4
+                    text-beige font-varela
+                    py-4
+                    md:py-6
+                    lg:gap-24"
+                >
+                    <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowBack}</button>
+                    <span className="w-40 md:w-60 text-lg md:text-2xl lg:text-3xl ">{selectedDay.month}: {selectedDay.date}</span>
+                    <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowForward}</button>
+                </div>
+            )}
+            
 
             {/* Container: Calendar */}
             <div
                 className="
                 grid grid-flow-col grid-cols-7 gap-2
-              text-beige text-center 
+              text-beige text-center font-varela
                 py-4 px-4
                 md:px-20 md:gap-3
                 lg:mx-32 lg:gap-4"
