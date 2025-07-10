@@ -542,6 +542,12 @@
   .border-amber-200 {
     border-color: var(--color-amber-200);
   }
+  .border-amber-500 {
+    border-color: var(--color-amber-500);
+  }
+  .border-beige {
+    border-color: var(--color-beige);
+  }
   .border-blue-200 {
     border-color: var(--color-blue-200);
   }
@@ -566,8 +572,14 @@
   .border-gray-800 {
     border-color: var(--color-gray-800);
   }
+  .border-red-300 {
+    border-color: var(--color-red-300);
+  }
   .border-red-400 {
     border-color: var(--color-red-400);
+  }
+  .border-red-600 {
+    border-color: var(--color-red-600);
   }
   .border-transparent {
     border-color: transparent;
@@ -586,6 +598,9 @@
   }
   .bg-amber-300 {
     background-color: var(--color-amber-300);
+  }
+  .bg-amber-500 {
+    background-color: var(--color-amber-500);
   }
   .bg-beige {
     background-color: var(--color-beige);
@@ -746,6 +761,9 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
   .text-beige {
     color: var(--color-beige);

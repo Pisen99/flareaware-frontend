@@ -68,16 +68,16 @@ function CalendarTwo() {
                             p-1 md:p-2
                             text-base md:text-2xl lg:text-3xl
                             cursor-pointer
-                            ${selectedCard === index && "font-bold"}
-                            `}
-                            
+                            ${selectedCard === index && "font-bold"}`}
                         >
-                            <p className="leading-loose">{item.day}</p>
+                            <p className="leading-loose sm:block lg:hidden">{item.day}</p>
+                            <p className="leading-loose hidden lg:block">{item.dayLG}</p>
                             {/* Display: changes on active card */}
                             <div 
                                 className={`
-                                border-2 border-gray-600 rounded-full 
+                                border-2 rounded-full 
                                 py-0.5
+                                ${item.currentDay ? "border-beige" : "border-gray-600"}
                                 ${selectedCard === index ? "bg-beige" : "bg-gray-500"}`}>
                             </div>
                         </div>
