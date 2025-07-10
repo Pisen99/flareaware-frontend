@@ -38,9 +38,9 @@ function CalendarTwo() {
                 md:py-6
                 lg:gap-24"
             >
-                <button className="text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowBack}</button>
+                <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowBack}</button>
                 <span className="text-lg md:text-2xl lg:text-3xl">Monday 7 June</span>
-                <button className="text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowForward}</button>
+                <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowForward}</button>
             </div>
 
             {/* Container: Calendar */}
@@ -61,13 +61,14 @@ function CalendarTwo() {
                         {/* Display: Each day of the week & changes on active card */}
                         <div
                             className={`
-                            p-2
+                            p-1 md:p-2
                             text-base md:text-2xl lg:text-3xl
+                            cursor-pointer
                             ${selectedCard === index && "font-bold"}
                             `}
                             
                         >
-                            <p>{item.day}</p>
+                            <p className="leading-loose">{item.day}</p>
                             {/* Display: changes on active card */}
                             <div 
                                 className={`
