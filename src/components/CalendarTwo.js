@@ -46,7 +46,7 @@ function CalendarTwo() {
             {/* Container: Calendar */}
             <div
                 className="
-                grid grid-cols-7 grid-rows-2 gap-2
+                grid grid-flow-col grid-cols-7 gap-2
               text-beige text-center 
                 py-4 px-4
                 md:px-20 md:gap-3
@@ -58,39 +58,26 @@ function CalendarTwo() {
                         key={index}
                         onClick={() => handleActiveCard(index)}
                     >
-                        {/* Display: Each day of the week */}
+                        {/* Display: Each day of the week & changes on active card */}
                         <div
                             className={`
-                            col-span-1
                             p-2
-                            text-sm md:text-xl lg:text-2xl
+                            text-base md:text-2xl lg:text-3xl
                             ${selectedCard === index && "font-bold"}
                             `}
                             
                         >
                             <p>{item.day}</p>
-                        </div>
-                        {/* Display: Handles active card */}
-                        <div
-                            className={`
-                            col-span-1
-                            border-2 border-gray-600 rounded-full 
-                            py-0.5
-                            ${selectedCard === index ? "bg-beige" : "bg-gray-500"}`}
-                        >
+                            {/* Display: changes on active card */}
+                            <div 
+                                className={`
+                                border-2 border-gray-600 rounded-full 
+                                py-0.5
+                                ${selectedCard === index ? "bg-beige" : "bg-gray-500"}`}>
+                            </div>
                         </div>
                     </div>
                 ))}
-            </div>
-
-            {/* Container: Buttons */}
-            <div
-                className="
-                bg-gray-500 border-2 border-gray-600 rounded-xl
-                p-4 mx-4
-                md:border-4 md:border-gray-600 md:mx-20 md:px-8
-                lg:mx-48 lg:px-16"
-            >
             </div>
         </>
 
