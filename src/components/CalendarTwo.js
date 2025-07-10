@@ -4,20 +4,18 @@ import moment from "moment";
 import { useState } from "react";
 
 function CalendarTwo() {
-    const [selectedCard, setSelectedCard] = useState(null); // Used for handling selected card
-    // Handles clicked day card
-    const handleActiveCard = (index) => {
-        setSelectedCard(index);
-    }
-
     const today = moment(); // Gets today's date using moment
-    const startOfWeek = moment().startOf("isoWeek"); // isoWeek order: Monday => Sunday
+    const todayIndex = today.isoWeekday() - 1; // index of today's day in the week (Monday = 0, Sunday = 6) o
+    
+    const [selectedCard, setSelectedCard] = useState(todayIndex); // Used for handling selected card
+    const [weekOffSet, setWeekOffSet] = useState(0); // State to track week offset from current week (0 = current)
+
+    const startOfWeek = moment().startOf("isoWeek").add(weekOffSet, "weeks"); // isoWeek order: Monday => Sunday
     // Generate array of 7 days for the current week view
     const thisWeek = Array.from({ length: 7, }, (_, index) => {
         const day = startOfWeek.clone().add(index, "days");
         return {
             day: day.format("dd")[0], // Ex: "M"
-            dayFull: day.format("dddd"),
             dayLG: day.format("ddd"), // Ex: "Mon"
             date: day.date(), // Ex: "7" or "28"
             month: day.format("MMMM"), // Ex: "June"
@@ -26,6 +24,18 @@ function CalendarTwo() {
         }
     })
 
+    // Handle week navigation:
+    // - Adjusts the week offset (moves forward or back by 1 week)
+    const handleWeek = (dir) => {
+        setWeekOffSet(prev => prev + (dir === "forward" ? 1 : - 1));
+    }
+
+    // Handles clicked day card
+    const handleActiveCard = (index) => {
+        setSelectedCard(index);
+    }
+
+    // Determine which day to display as selected (clicked or today)
     const selectedDay = selectedCard !== null ? thisWeek[selectedCard] : thisWeek.find(day => day.currentDay);
 
     return (
@@ -35,23 +45,27 @@ function CalendarTwo() {
                 <div
                     className="
                     flex flex-row justify-center text-center gap-4
-                    text-beige font-varela
+                    text-beige
                     py-4
                     md:py-6
                     lg:gap-24"
                 >
-                    <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowBack}</button>
+                    <button 
+                        onClick={() => handleWeek("back")}
+                        className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
+                    >{Icons.arrows.arrowBack}</button>
                     <span className="w-40 md:w-60 text-lg md:text-2xl lg:text-3xl ">{selectedDay.month}: {selectedDay.date}</span>
-                    <button className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl">{Icons.arrows.arrowForward}</button>
+                    <button
+                        onClick={() => handleWeek("forward")} 
+                        className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
+                    >{Icons.arrows.arrowForward}</button>
                 </div>
             )}
-            
-
             {/* Container: Calendar */}
             <div
                 className="
                 grid grid-flow-col grid-cols-7 gap-2
-              text-beige text-center font-varela
+              text-beige text-center
                 py-4 px-4
                 md:px-20 md:gap-3
                 lg:mx-32 lg:gap-4"
