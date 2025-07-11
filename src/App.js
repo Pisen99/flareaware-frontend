@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import CalendarTwo from './components/CalendarTwo';
+import Calendar from './components/CalendarTwo';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <div className='bg-gray-700'>
       <Header />
       <Navbar />
-      <CalendarTwo />
+      <Calendar />
     </div>
   );
 }

@@ -1,108 +1,106 @@
 import React from "react";
+import Icons from "./Icons";
 import moment from "moment";
 import { useState } from "react";
-import Icons from "./Icons";
-import { motion, AnimatePresence } from "framer-motion";
 
 function Calendar() {
-    // Get today's date using moment
-    const today = moment();
-    // Get the index of today's day in the week (Monday = 0, Sunday = 6)
-    const todayIndex = today.isoWeekday() - 1;
+    const today = moment(); // Gets today's date using moment
+    const todayIndex = today.isoWeekday() - 1; // index of today's day in the week (Monday = 0, Sunday = 6) o
+    
+    const [selectedCard, setSelectedCard] = useState(todayIndex); // Used for handling selected card
+    const [weekOffSet, setWeekOffSet] = useState(0); // State to track week offset from current week (0 = current)
 
-    // State to track week offset from current week (0 = current)
-    const [weekOffSet, setWeekOffSet] = useState(0);
-    // State to track which weekday card is currently selected (defaults to today)
-    const [selectedCard, setSelectedCard] = useState(todayIndex);
-    // State to track animation direction when changing switching between weeks
-    const [direction, setDirection] = useState("forward");
-
-    // Calculate the start of the week based on the offset
-    const startOfWeek = moment().startOf("isoWeek").add(weekOffSet, "weeks");
-
+    const startOfWeek = moment().startOf("isoWeek").add(weekOffSet, "weeks"); // isoWeek order: Monday => Sunday
     // Generate array of 7 days for the current week view
-    const thisWeek = Array.from({ length: 7 }, (_, i) => {
-        const day = startOfWeek.clone().add(i, "days");
+    const thisWeek = Array.from({ length: 7, }, (_, index) => {
+        const day = startOfWeek.clone().add(index, "days");
         return {
-            daySM: day.format("ddd")[0], // First letter of weekday (e.g., M)
-            dayMD: day.format("ddd"), // First 3 letters of weekday (e.g., Mon)
-            dayLG: day.format("dddd"), // Weekday (e.g., Monday)
-            date: day.date(), // Day number (e.g., 28)
-            month: day.format("MMMM"), // Full month name (e.g., June)
-            currentDay: day.isSame(today, "day") // Marks today's date
+            day: day.format("dd")[0], // Ex: "M"
+            dayLG: day.format("ddd"), // Ex: "Mon"
+            date: day.date(), // Ex: "7" or "28"
+            month: day.format("MMMM"), // Ex: "June"
+            year: day.year(), // Ex: "2025"
+            currentDay: day.isSame(today, "day")
         }
     })
 
-    // Handle clicking a specific day card
+    // Handle week navigation:
+    // - Adjusts the week offset (moves forward or back by 1 week)
+    const handleWeek = (dir) => {
+        setWeekOffSet(prev => prev + (dir === "forward" ? 1 : - 1));
+    }
+
+    // Handles clicked day card
     const handleActiveCard = (index) => {
-        // console.log(index);
         setSelectedCard(index);
     }
 
     // Determine which day to display as selected (clicked or today)
     const selectedDay = selectedCard !== null ? thisWeek[selectedCard] : thisWeek.find(day => day.currentDay);
-    // console.log(selectedDay);
-
-    // Handle week navigation:
-    // - Updates scroll direction for animation
-    // - Adjusts the week offset (moves forward or back by 1 week)
-    const handleWeeks = (dir) => {
-        setDirection(dir);
-        setWeekOffSet(prev => prev + (direction === "forward" ? 1 : -1));
-    }
 
     return (
-        <div className="py-4">
-            {/* Display selected day info with navigation buttons */}
+        <>
+            {/* Displaying exact date of each day clicked or default current day */}
             {selectedDay && (
-                <div className="flex justify-center items-center text-center py-4">
-                    <button onClick={() => handleWeeks("back")} className="p-4 text-2xl" >{Icons.arrows.arrowBack}</button>
-                    <strong className="w-40">{selectedDay.month}: {selectedDay.date}</strong>
-                    <button onClick={() => handleWeeks("forward")} className="p-4 text-2xl" >{Icons.arrows.arrowForward}</button>
+                <div
+                    className="
+                    flex flex-row justify-center text-center gap-4
+                    text-beige
+                    py-4
+                    md:py-6
+                    lg:gap-24"
+                >
+                    <button 
+                        onClick={() => handleWeek("back")}
+                        className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
+                    >{Icons.arrows.arrowBack}</button>
+                    <span className="w-40 md:w-60 text-lg md:text-2xl lg:text-3xl ">{selectedDay.month}: {selectedDay.date}</span>
+                    <button
+                        onClick={() => handleWeek("forward")} 
+                        className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
+                    >{Icons.arrows.arrowForward}</button>
                 </div>
             )}
-            {/* Weekday cards w animation */}
-            <div 
+            {/* Container: Calendar */}
+            <div
                 className="
-                overflow-hidden
-                md:px-20
-                lg:px-44
-                "
+                grid grid-flow-col grid-cols-7 gap-2
+              text-beige text-center
+                py-4 px-4
+                md:px-20 md:gap-3
+                lg:mx-32 lg:gap-4"
             >
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={weekOffSet}
-                        initial={{ x: direction === "forward" ? 300 : -300, opacity: 0.5 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.2 }}
-                        className="
-                            grid grid-flow-col grid-cols-7
-                            text-center
-                            gap-x-0.5"
+                {/* ROW 1: Mapping to generate calendar */}
+                {thisWeek.map((item, index) => (
+                    <div 
+                        key={index}
+                        onClick={() => handleActiveCard(index)}
                     >
-                        {thisWeek.map((item, index) => (
-                            <div key={index}>
-                                <div
-                                    onClick={() => handleActiveCard(index)}
-                                    className={`
-                                        border-2 rounded-full px-2 py-4
-                                        lg:rounded-3xl lg:px-0
-                                        ${item.currentDay ? "border-blue-600" : "border-transparent"}
-                                        ${selectedCard === index ? "bg-blue-300" : "bg-blue-400"}`}
-                                >
-                                    <p>
-                                        <span className="block sm:hidden">{item.daySM}</span>
-                                        <span className="hidden sm:block lg:hidden">{item.dayMD}</span>
-                                        <span className="hidden lg:block">{item.dayLG}</span>
-                                    </p>
-                                </div>
+                        {/* Display: Each day of the week & changes on active card */}
+                        <div
+                            className={`
+                            p-1 md:p-2
+                            text-base md:text-2xl lg:text-3xl
+                            cursor-pointer
+                            ${selectedCard === index && "font-bold"}`}
+                        >
+                            <p className="leading-loose sm:block lg:hidden">{item.day}</p>
+                            <p className="leading-loose hidden lg:block">{item.dayLG}</p>
+                            {/* Display: changes on active card */}
+                            <div 
+                                className={`
+                                border-2 rounded-full 
+                                py-0.5
+                                ${item.currentDay ? "border-beige" : "border-gray-600"}
+                                ${selectedCard === index ? "bg-beige" : "bg-gray-500"}`}>
                             </div>
-                        ))}
-                    </motion.div>
-                </AnimatePresence>
+                        </div>
+                    </div>
+                ))}
             </div>
-        </div>
+        </>
+
     )
 }
 
-export default Calendar;
+export default Calendar
