@@ -5,8 +5,6 @@ import { IoIosAddCircle } from "react-icons/io";
 import { FaHeart } from "react-icons/fa";
 import { CiViewList } from "react-icons/ci";
 
-
-
 const Icons = {
     arrows: {
         arrowDown: <FaArrowDown />,

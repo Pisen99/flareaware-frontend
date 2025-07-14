@@ -381,6 +381,9 @@
   .gap-x-0\.5 {
     column-gap: calc(var(--spacing) * 0.5);
   }
+  .justify-self-end {
+    justify-self: flex-end;
+  }
   .overflow-hidden {
     overflow: hidden;
   }

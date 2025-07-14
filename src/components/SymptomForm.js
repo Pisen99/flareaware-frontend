@@ -1,4 +1,5 @@
 import React from "react";
+import Icons from "./Icons";
 
 function SymptomForm() {
 
@@ -24,11 +25,11 @@ function SymptomForm() {
             {/* Container: Symptoms */}
             <div 
                 className="
-                grid grid-cols-2
+                grid grid-cols-2 items-center
                 p-4 inset-shadow-sm"
             >
                 <span>symptom here</span>
-                <span className="text-right">+</span>
+                <span className="justify-self-end">{Icons.symbols.add}</span>
             </div>
         </div>
     )
