@@ -12,7 +12,7 @@ function SymptomForm() {
             rounded-xl shadow-xl/30
             mx-4 mt-4 "
         >
-            {/* Display: Symptom type */}
+            {/* Display: Label */}
             <div 
                 className="
                 bg-gray-600
@@ -20,16 +20,39 @@ function SymptomForm() {
                 rounded-t-xl 
                 py-4"
             >
-                Consistency
+                label
             </div>
-            {/* Container: Symptoms */}
+
+            {/* display: Symptoms */}
             <div 
                 className="
                 grid grid-cols-2 items-center
-                p-4 inset-shadow-sm"
+                p-4"
             >
-                <span>symptom here</span>
+                <span>symptom</span>
                 <span className="justify-self-end">{Icons.symbols.add}</span>
+            </div>
+
+            {/* Display: SUB Label */}
+            <div className="flex flex-col justify-center text-center">
+                <span 
+                    className="
+                    text-gray-600 text-sm 
+                    border-gray-600/30 border-t-2
+                    pt-2"
+                >
+                    subLabel
+                </span>
+            </div>
+
+            {/* Display: SUB Symptoms */}
+            <div 
+                className="
+                grid grid-cols-2 items-center
+                p-4"
+            >
+                <span>subSymptom</span>
+                <div className="flex justify-end items-center gap-1"></div>
             </div>
         </div>
     )
