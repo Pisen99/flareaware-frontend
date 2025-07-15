@@ -1,5 +1,6 @@
 import React from "react";
 import Icons from "./Icons";
+import FoodLogSelections from "./FoodLogSelections";
 
 function SymptomForm() {
 
@@ -12,26 +13,34 @@ function SymptomForm() {
             rounded-xl shadow-xl/30
             mx-4 mt-4 "
         >
-            {/* Display: Label */}
-            <div 
-                className="
-                bg-gray-600
-                text-center 
-                rounded-t-xl 
-                py-4"
-            >
-                label
+            {/* MAPPING: FoodLogSelections => categories & items */}
+            {FoodLogSelections.map((item, index) => (
+            <div key={index}>
+                {/* Display: Category */}
+                <div 
+                    className="
+                    bg-gray-600
+                    text-center 
+                    rounded-t-xl 
+                    py-4"
+                >
+                    {item.category}
+                </div>
+                {/* MAPPING: induvidual items */}
+                {item.items.map((label, i) => (
+                    // Display: Symptoms/label
+                    <div 
+                        className="
+                        grid grid-cols-2 items-center
+                        p-4"
+                    >
+                        <span>{label}</span>
+                        <span className="justify-self-end">{Icons.symbols.add}</span>
+                    </div>
+                ))}
             </div>
+            ))}
 
-            {/* display: Symptoms */}
-            <div 
-                className="
-                grid grid-cols-2 items-center
-                p-4"
-            >
-                <span>symptom</span>
-                <span className="justify-self-end">{Icons.symbols.add}</span>
-            </div>
             {/* hide for now */}
             <div className="hidden">
                 {/* Display: SUB Label */}
