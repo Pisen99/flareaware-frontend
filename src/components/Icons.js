@@ -9,9 +9,9 @@ import { BsFire } from "react-icons/bs";
 
 const Icons = {
     arrows: {
-        arrowDown: <FaArrowDown />,
-        arrowBack: <IoIosArrowBack />,
-        arrowForward: <IoIosArrowForward />
+        down: <FaArrowDown />,
+        prev: <IoIosArrowBack />,
+        next: <IoIosArrowForward />
     },
     symbols: {
         add: <IoIosAddCircle />,

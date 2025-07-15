@@ -19,12 +19,16 @@ function SymptomForm() {
                 {/* Display: Category */}
                 <div 
                     className="
+                    flex justify-around
                     bg-gray-600
                     text-center 
                     rounded-t-xl 
                     py-4"
                 >
-                    {item.category}
+                    <button>{Icons.arrows.arrowBack}</button>
+                    <span>{item.category}</span>
+                    <button>{Icons.arrows.arrowForward}</button>
+                    
                 </div>
                 {/* MAPPING: induvidual items */}
                 {item.items.map((label, i) => (

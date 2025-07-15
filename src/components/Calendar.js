@@ -27,7 +27,7 @@ function Calendar() {
     // Handle week navigation:
     // - Adjusts the week offset (moves forward or back by 1 week)
     const handleWeek = (dir) => {
-        setWeekOffSet(prev => prev + (dir === "forward" ? 1 : - 1));
+        setWeekOffSet(prev => prev + (dir === "next" ? 1 : - 1));
     }
 
     // Handles clicked day card
@@ -51,14 +51,14 @@ function Calendar() {
                     lg:gap-24"
                 >
                     <button 
-                        onClick={() => handleWeek("back")}
+                        onClick={() => handleWeek("prev")}
                         className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
-                    >{Icons.arrows.arrowBack}</button>
+                    >{Icons.arrows.prev}</button>
                     <span className="w-40 md:w-60 text-lg md:text-2xl lg:text-3xl ">{selectedDay.month}: {selectedDay.date}</span>
                     <button
-                        onClick={() => handleWeek("forward")} 
+                        onClick={() => handleWeek("next")} 
                         className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
-                    >{Icons.arrows.arrowForward}</button>
+                    >{Icons.arrows.next}</button>
                 </div>
             )}
             {/* Container: Calendar */}
