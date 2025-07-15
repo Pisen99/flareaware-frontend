@@ -76,7 +76,7 @@ function SymptomForm() {
                         <button onClick={handleNext}>{Icons.arrows.next}</button>
                     </div>
                     {/* Scroll div */}
-                    <div className="max-h-[170px] overflow-y-auto">
+                    <div className="max-h-[170px] overflow-y-auto scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-400">
                         {/* Display: Items for this category */}
                         {selection.items.map((label, i) => (
                             <div key={i} className="grid grid-cols-2 items-center p-4">

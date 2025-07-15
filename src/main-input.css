@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @import "tailwindcss";
+@plugin "tailwind-scrollbar";
 
 @theme {
     --color-beige: oklch(0.9636 0.0328 107);
