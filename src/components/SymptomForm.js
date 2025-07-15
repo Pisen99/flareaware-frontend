@@ -75,13 +75,16 @@ function SymptomForm() {
                         <span>{selection.category}</span>
                         <button onClick={handleNext}>{Icons.arrows.next}</button>
                     </div>
-                    {/* Display: Items for this category */}
-                    {selection.items.map((label, i) => (
-                        <div key={i} className="grid grid-cols-2 items-center p-4">
-                            <span>{label}</span>
-                            <span className="justify-self-end">{Icons.symbols.add}</span>
-                        </div>
-                    ))}
+                    {/* Scroll div */}
+                    <div className="max-h-[170px] overflow-y-auto">
+                        {/* Display: Items for this category */}
+                        {selection.items.map((label, i) => (
+                            <div key={i} className="grid grid-cols-2 items-center p-4">
+                                <span>{label}</span>
+                                <span className="justify-self-end">{Icons.symbols.add}</span>
+                            </div>
+                        ))}
+                    </div>
 
                     {/* hide for now */}
                     <div className="hidden">
