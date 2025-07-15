@@ -25,15 +25,14 @@ function SymptomForm() {
                     rounded-t-xl 
                     py-4"
                 >
-                    <button>{Icons.arrows.arrowBack}</button>
+                    <button>{Icons.arrows.prev}</button>
                     <span>{item.category}</span>
-                    <button>{Icons.arrows.arrowForward}</button>
-                    
+                    <button>{Icons.arrows.next}</button>
                 </div>
                 {/* MAPPING: induvidual items */}
                 {item.items.map((label, i) => (
                     // Display: Symptoms/label
-                    <div 
+                    <div key={i}
                         className="
                         grid grid-cols-2 items-center
                         p-4"
