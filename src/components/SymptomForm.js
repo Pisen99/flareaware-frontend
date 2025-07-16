@@ -56,7 +56,7 @@ function SymptomForm() {
     };
 
     return (
-        <div className="relative overflow-hidden mx-4 mt-4 min-h-[300px]">
+        <div className="relative overflow-hidden mx-4 mt-4 min-h-[270px]">
             {/* Animation: Categories & selections */}
             <AnimatePresence custom={direction} mode="wait">
                 <motion.div
