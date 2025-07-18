@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Calendar from './components/Calendar';
-import SymptomForm from './components/SymptomForm';
+import SelectionsCard from './components/SelectionsCard';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Navbar />
       <Calendar />
-      <SymptomForm />
+      <SelectionsCard />
     </div>
   );
 }

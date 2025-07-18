@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Icons from "./Icons";
-import FoodLogSelections from "./FoodLogSelections";
+import SelectionsFood from "../data/SelectionsFood";
 
-function SymptomForm() {
+function SelectionsCard() {
     // State: Index of the currently selected category in FoodLogSelections
     const [index, setIndex] = useState(0);
     // State: Direction of animation (1 for forward, -1 for backward)
@@ -11,13 +11,13 @@ function SymptomForm() {
     const [direction, setDirection] = useState(0);
 
     // Get the currently selected item based on the index
-    const selection = FoodLogSelections[index];
+    const selection = SelectionsFood[index];
 
     // Handler: Move to the next category
     // Sets direction to 1 (next) & loops back to 0 after the last item
     const handleNext = () => {
         setDirection(1);
-        setIndex((prev) => (prev + 1) % FoodLogSelections.length);
+        setIndex((prev) => (prev + 1) % SelectionsFood.length);
     };
 
     // Handler: Move to the prev category
@@ -25,7 +25,7 @@ function SymptomForm() {
     const handlePrev = () => {
         setDirection(-1);
         setIndex((prev) =>
-            prev === 0 ? FoodLogSelections.length - 1 : prev - 1
+            prev === 0 ? SelectionsFood.length - 1 : prev - 1
         );
     };
 
@@ -60,7 +60,7 @@ function SymptomForm() {
             {/* Animation: Categories & selections */}
             <AnimatePresence custom={direction} mode="wait">
                 <motion.div
-                    key={selection.category}
+                    key={selection.title}
                     custom={direction}
                     variants={animationVariants}
                     initial="enter"
@@ -72,7 +72,7 @@ function SymptomForm() {
                     {/* Display: Category & prev/next buttons*/}
                     <div className="flex justify-around bg-gray-600 text-center rounded-t-xl py-4">
                         <button onClick={handlePrev}>{Icons.arrows.prev}</button>
-                        <span>{selection.category}</span>
+                        <span>{selection.title}</span>
                         <button onClick={handleNext}>{Icons.arrows.next}</button>
                     </div>
                     {/* Scroll div */}
@@ -110,4 +110,4 @@ function SymptomForm() {
     );
 }
 
-export default SymptomForm;
+export default SelectionsCard;

@@ -1,16 +1,16 @@
-const FoodLogSelections = [
+const SelectionsFood = [
     {
-        category: "consistency",
+        title: "consistency",
         items: ["solid", "boiled", "liquid"]
     },
     {
-        category: "meats",
+        title: "meats",
         items: ["red meat", "white meat", "fish", "shellfish"]
     },
     {
-        category: "triggers",
+        title: "triggers",
         items: ["gluten", "lactose", "fiber", "fried", "spicy", "sugar", "alcohol", "caffeine"]
     }
 ];
 
-export default FoodLogSelections;
+export default SelectionsFood;
