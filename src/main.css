@@ -13,6 +13,7 @@
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-900: oklch(39.6% 0.141 25.723);
     --color-orange-600: oklch(64.6% 0.222 41.116);
+    --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-yellow-100: oklch(97.3% 0.071 103.193);
     --color-yellow-300: oklch(90.5% 0.182 98.111);
     --color-yellow-600: oklch(68.1% 0.162 75.834);
@@ -522,6 +523,11 @@
   .justify-self-end {
     justify-self: flex-end;
   }
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .overflow-hidden {
     overflow: hidden;
   }
@@ -563,6 +569,9 @@
   .border-t-2 {
     border-top-style: var(--tw-border-style);
     border-top-width: 2px;
+  }
+  .border-amber-300 {
+    border-color: var(--color-amber-300);
   }
   .border-beige {
     border-color: var(--color-beige);
@@ -750,6 +759,9 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
@@ -784,6 +796,10 @@
   .text-6xl {
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
+  .text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading, var(--text-7xl--line-height));
   }
   .text-base {
     font-size: var(--text-base);
@@ -1165,6 +1181,22 @@
     --tw-text-shadow-color: color-mix(in srgb, oklch(49.1% 0.27 292.581) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-text-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-violet-700) 30%, transparent) var(--tw-text-shadow-alpha), transparent);
+    }
+  }
+  .hover\:-translate-x-1 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-translate-x: calc(var(--spacing) * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  .hover\:-translate-x-2 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-translate-x: calc(var(--spacing) * -2);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
     }
   }
   .hover\:-translate-y-1 {

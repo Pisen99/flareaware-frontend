@@ -27,7 +27,6 @@ function Button({ label, variant, onClick, className = "" }) {
 
             hover:bg-gray-700/80
             hover:shadow-md
-            hover:-translate-y-1 hover:scale-110
             
             active:inset-shadow-sm active:inset-shadow-gray-900 active:shadow-xs
         `.trim().replace(/\s+/g, ' '),
