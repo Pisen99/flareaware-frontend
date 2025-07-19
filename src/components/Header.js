@@ -1,35 +1,23 @@
 import React from "react";
-import Button from "./Button";
-import Images from "./Images";
-import HeaderTypeAnimation from "./HeaderTypeAnimation";
-import Icons from "./Icons";
+import AnimationOrb from "./AnimationOrb";
+import AnimationTyping from "./AnimationTyping";
 
 function Header() {
-
     return (
-        <>
-        <div style={Images.header} className="min-h-screen flex flex-col items-center justify-center">
-            <div className="min-h-[50vh] flex flex-col items-center justify-end gap-4">
-                <h1 className="
-                    text-4xl font-bold text-beige
-                    md:text-8xl
-                    "
-                >
-                    FlareAware
-                </h1>
-                <HeaderTypeAnimation />
-            </div>
-            <div className="min-h-[50vh] flex flex-col items-center justify-end p-4 gap-4">
-                <p className="text-lg text-beige">Get Started</p>
-                <Button 
-                    label={Icons.arrows.down} 
-                    variant="icon" 
-                    className="animate-bounce" 
-                    onClick={() => console.log("Clicked")}/>
+        <div className="w-full h-screen relative">
+            <AnimationOrb
+                hoverIntensity={0.5}    // How strong the wave-y distortion is on hover
+                rotateOnHover={true}    // Whether the background rotates when hovered
+                hue={179}                 // Base hue shift (0 means default color palette)
+                forceHoverState={false} // When true, hover is always "on"
+            />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center font-rubik mt-2 whitespace-nowrap">
+                <h1 className="text-4xl font-bold text-beige md:text-6xl animate-grow mb-2 md:mb-4">FlareAware</h1>
+                <AnimationTyping />
             </div>
         </div>
-        </>
     )
-};
+}
 
 export default Header;
+

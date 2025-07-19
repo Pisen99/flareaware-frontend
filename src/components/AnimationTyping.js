@@ -1,6 +1,6 @@
 import { TypeAnimation } from "react-type-animation";
 
-function HeaderTypeAnimation() {
+function AnimationTyping() {
 
     return (
         <TypeAnimation
@@ -15,7 +15,7 @@ function HeaderTypeAnimation() {
             speed={20}
             cursor={false}
             className="
-            text-xl text-beige
+            text-md text-beige
             md:text-4xl
             "
             repeat={0}
@@ -24,4 +24,4 @@ function HeaderTypeAnimation() {
     )
 };
 
-export default HeaderTypeAnimation;
+export default AnimationTyping;
