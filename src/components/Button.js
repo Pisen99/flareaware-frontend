@@ -10,6 +10,9 @@ function Button({ label, variant, onClick, className = "" }) {
         transition
         overflow-hidden group
         cursor-pointer
+
+        text-sm
+        md:text-xl
     `.trim().replace(/\s+/g, ' ');
 
     // VARIANTS btn style
