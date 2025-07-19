@@ -12,19 +12,19 @@ function Cards() {
             title: "Bowel symptoms",
             bgImg: Images.navbar.bowelLog,
             about: "",
-            symbols: <Button label={Icons.symbols.add} variant="secondary" onClick={() => console.log("Clicked 'Bowel symptoms'")} />
+            symbols: <Button label={Icons.symbols.add} variant="icon" className="text-red-400" onClick={() => console.log("Clicked 'Bowel symptoms'")} />
         },
         {
             title: "Log meals",
             bgImg: Images.navbar.foodLog,
             about: "",
-            symbols: <Button label={Icons.symbols.list} variant="secondary" onClick={() => console.log("Clicked 'Log meals'")} />
+            symbols: <Button label={Icons.symbols.list} variant="icon" className="text-red-400" onClick={() => console.log("Clicked 'Log meals'")} />
         },
         {
             title: "Other",
             bgImg: Images.navbar.other,
             about: "",
-            symbols: <Button label={Icons.symbols.heart} variant="secondary" onClick={() => console.log("Clicked 'Other'")} />
+            symbols: <Button label={Icons.symbols.heart} variant="icon" className="text-red-400" onClick={() => console.log("Clicked 'Other'")} />
         }
     ]
 

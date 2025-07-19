@@ -1,7 +1,10 @@
 import React from "react";
-import Icons from "./Icons";
-import moment from "moment";
 import { useState } from "react";
+import moment from "moment";
+import Icons from "./Icons";
+import Button from "./Button";
+
+
 
 function Calendar() {
     const today = moment(); // Gets today's date using moment
@@ -50,15 +53,19 @@ function Calendar() {
                     md:py-6
                     lg:gap-24"
                 >
-                    <button 
+                    <Button 
+                        label={Icons.arrows.prev}
+                        variant="icon"
+                        className=" text-gray-400"
                         onClick={() => handleWeek("prev")}
-                        className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
-                    >{Icons.arrows.prev}</button>
+                    />
                     <span className="w-40 md:w-60 text-lg md:text-2xl lg:text-3xl ">{selectedDay.month}: {selectedDay.date}</span>
-                    <button
+                    <Button 
+                        label={Icons.arrows.next}
+                        variant="icon"
+                        className="text-gray-400"
                         onClick={() => handleWeek("next")} 
-                        className="cursor-pointer text-gray-400 text-2xl md:text-3xl lg:text-4xl"
-                    >{Icons.arrows.next}</button>
+                    />
                 </div>
             )}
             {/* Container: Calendar */}

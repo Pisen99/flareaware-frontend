@@ -21,7 +21,11 @@ function Header() {
             </div>
             <div className="min-h-[50vh] flex flex-col items-center justify-end p-4 gap-4">
                 <p className="text-lg text-beige">Get Started</p>
-                <Button label={Icons.arrows.down} variant="primary" onClick={() => console.log("Clicked")}/>
+                <Button 
+                    label={Icons.arrows.down} 
+                    variant="icon" 
+                    className="animate-bounce" 
+                    onClick={() => console.log("Clicked")}/>
             </div>
         </div>
         </>
