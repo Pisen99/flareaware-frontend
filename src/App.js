@@ -7,7 +7,7 @@ import SelectionsCard from './components/SelectionsCard';
 function App() {
 
   return (
-    <div className='bg-gray-700'>
+    <div className='bg-gray-900'>
       <Header />
       <Navbar />
       <Calendar />
