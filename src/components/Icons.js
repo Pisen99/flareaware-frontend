@@ -8,6 +8,7 @@ import { GiDrop } from "react-icons/gi";
 import { BsFire } from "react-icons/bs";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { GiStomach } from "react-icons/gi";
+import { BsInfo } from "react-icons/bs";
 
 const Icons = {
     arrows: {
@@ -20,7 +21,8 @@ const Icons = {
         heart: <FaHeart />,
         list: <CiViewList />,
         food: <IoFastFoodOutline />,
-        bowel: <GiStomach />
+        bowel: <GiStomach />,
+        info: <BsInfo />,
     },
     rank: {
         pain: <BsFire />,

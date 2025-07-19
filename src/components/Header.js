@@ -29,7 +29,7 @@ function Header() {
                     <Button 
                         label={"Learn More"} 
                         variant="primary"
-                        onClick={() => console.log("Get Started")}
+                        onClick={() => console.log("Learn More")}
                     />
                 </div>
                 
