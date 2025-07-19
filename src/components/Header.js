@@ -1,6 +1,7 @@
 import React from "react";
 import AnimationOrb from "./AnimationOrb";
 import AnimationTyping from "./AnimationTyping";
+import Button from "./Button";
 
 function Header() {
 
@@ -18,6 +19,22 @@ function Header() {
             <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-rubik mt-2 whitespace-nowrap">
                 <AnimationTyping />
             </div>
+            <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-[90%]">
+                <div className="flex flex-row gap-x-4 justify-center whitespace-nowrap">
+                    <Button 
+                        label={"Get Started"} 
+                        variant="primary"
+                        onClick={() => console.log("Get Started")}
+                    />
+                    <Button 
+                        label={"Learn More"} 
+                        variant="secondary"
+                        onClick={() => console.log("Get Started")}
+                    />
+                </div>
+                
+            </div>
+            
         </div>
     )
 }
