@@ -4,6 +4,7 @@
 
 @theme {
     --color-beige: oklch(0.9636 0.0328 107);
+    --color-orange: oklch(0.6441 0.1263 54.28);
     --color-green: oklch(0.7294 0.1579 127.81);
 
     --font-rubik: "Rubik", sans-serif;
