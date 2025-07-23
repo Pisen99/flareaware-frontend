@@ -4,8 +4,8 @@ function AnimationLogo() {
     return (
         <div 
             className="
-            text-beige text-5xl tracking-wider
-            md:text-8xl md:tracking-widest
+            text-beige text-4xl tracking-wider
+            md:text-7xl md:tracking-widest
             mb-2 md:mb-10
             animate-grow-in opacity-0 delay-200"
         >
