@@ -7,19 +7,25 @@ function HeroActions() {
     return (
         <div className="flex flex-row gap-x-4 justify-center whitespace-nowrap">
             {/* Get started */}
-            <Button
-                label="Get Started"
-                variant="secondary"
-                onClick={() => console.log("Get Started")}
-            />
+            <div className="animate-grow-in opacity-0 delay-3700">
+                <Button
+                    label="Get Started"
+                    variant="secondary"
+                    onClick={() => console.log("Get Started")}
+                />
+            </div>
+            
             {/* Learn more */}
-            <Button
-                label="Learn More"
-                symbol={Icons.symbols.info}
-                variant="primary"
-                expand={true}
-                onClick={() => console.log("Learn More")}
+            <div className="animate-grow-in opacity-0 delay-4000">
+                <Button
+                    label="Learn More"
+                    symbol={Icons.symbols.info}
+                    variant="primary"
+                    expand={true}
+                    onClick={() => console.log("Learn More")}
             />
+            </div>
+            
             
         </div>
     )

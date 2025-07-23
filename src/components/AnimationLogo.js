@@ -4,9 +4,10 @@ function AnimationLogo() {
     return (
         <div 
             className="
-            text-beige text-5xl tracking-wider font-bold 
+            text-beige text-5xl tracking-wider
             md:text-8xl md:tracking-widest
-            mb-2 md:mb-10"
+            mb-2 md:mb-10
+            animate-grow-in opacity-0 delay-200"
         >
             <h1>FlareAware</h1>
         </div>

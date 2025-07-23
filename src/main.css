@@ -608,6 +608,15 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .delay-200 {
+    transition-delay: 200ms;
+  }
+  .delay-3700 {
+    transition-delay: 3700ms;
+  }
+  .delay-4000 {
+    transition-delay: 4000ms;
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -868,6 +877,12 @@
   }
   .animate-grow-in {
     animation: grow-in 600ms ease-out forwards;
+  }
+  .delay-3700 {
+    animation-delay: 3700ms;
+  }
+  .delay-4000 {
+    animation-delay: 4000ms;
   }
 }
 @layer base {

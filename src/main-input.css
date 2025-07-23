@@ -26,4 +26,12 @@
     .animate-grow-in {
       animation: grow-in 600ms ease-out forwards;
     }
+
+    .delay-3700 {
+      animation-delay: 3700ms;
+    }
+  
+    .delay-4000 {
+      animation-delay: 4000ms;
+    }
   }

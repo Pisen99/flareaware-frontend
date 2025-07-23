@@ -5,11 +5,11 @@ function AnimationTyping() {
     return (
         <TypeAnimation
             sequence={[
-                800,
+                700,
                 "Track",
-                500,
+                400,
                 "Track, Manage",
-                500,
+                400,
                 "Track, Manage & Control"
             ]}
             wrapper="span"
