@@ -24,7 +24,7 @@ function Header() {
                 <AnimationTyping />
             </div>
             {/* SECTION: Hero action buttons */}
-            <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-[90%] md:top-[75%]">
+            <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-[90%] md:top-[70%] lg:top-[80%]">
                 <HeroActions />
             </div>
             

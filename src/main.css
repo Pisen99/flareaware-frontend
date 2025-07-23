@@ -825,6 +825,11 @@
       display: block;
     }
   }
+  .md\:top-\[\%\] {
+    @media (width >= 48rem) {
+      top: %;
+    }
+  }
   .md\:top-\[60\%\] {
     @media (width >= 48rem) {
       top: 60%;
@@ -919,6 +924,21 @@
     @media (width >= 48rem) {
       --tw-tracking: var(--tracking-widest);
       letter-spacing: var(--tracking-widest);
+    }
+  }
+  .lg\:top-\[70\%\] {
+    @media (width >= 64rem) {
+      top: 70%;
+    }
+  }
+  .lg\:top-\[75\%\] {
+    @media (width >= 64rem) {
+      top: 75%;
+    }
+  }
+  .lg\:top-\[80\%\] {
+    @media (width >= 64rem) {
+      top: 80%;
     }
   }
   .lg\:mx-32 {
