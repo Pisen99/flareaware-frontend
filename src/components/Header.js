@@ -1,7 +1,9 @@
 import React from "react";
 import AnimationOrb from "./AnimationOrb";
 import AnimationTyping from "./AnimationTyping";
+import AnimationLogo from "./AnimationLogo";
 import HeroActions from "./HeroActions";
+import { delay } from "framer-motion";
 
 function Header() {
 
@@ -15,7 +17,7 @@ function Header() {
             />
             {/* SECTION: Logo */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-rubik">
-                <h1 className="text-4xl font-bold text-beige md:text-6xl animate-grow mb-2 md:mb-4">FlareAware</h1>
+                <AnimationLogo />
             </div>
             {/* SECTION: Motto / Tagline */}
             <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-rubik mt-2 whitespace-nowrap">
