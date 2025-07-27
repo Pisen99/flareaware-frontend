@@ -6,9 +6,12 @@ import { FaHeart } from "react-icons/fa";
 import { CiViewList } from "react-icons/ci";
 import { GiDrop } from "react-icons/gi";
 import { BsFire } from "react-icons/bs";
-import { IoFastFoodOutline } from "react-icons/io5";
+import { TbSoupFilled } from "react-icons/tb";
 import { GiStomach } from "react-icons/gi";
 import { BsInfoLg } from "react-icons/bs";
+import { BiSolidHomeHeart } from "react-icons/bi";
+import { FaToiletPaper } from "react-icons/fa";
+
 
 const Icons = {
     arrows: {
@@ -20,9 +23,11 @@ const Icons = {
         add: <IoIosAddCircle />,
         heart: <FaHeart />,
         list: <CiViewList />,
-        food: <IoFastFoodOutline />,
+        food: <TbSoupFilled />,
         bowel: <GiStomach />,
         info: <BsInfoLg />,
+        home: <BiSolidHomeHeart />,
+        toilet: <FaToiletPaper />,
     },
     rank: {
         pain: <BsFire />,
