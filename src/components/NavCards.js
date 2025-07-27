@@ -12,7 +12,12 @@ function NavCards() {
 
     return (
         // CONTAINER: cards
-        <div className="flex flex-row justify-evenly gap-6 p-4 text-beige">
+        <div 
+            className="
+                flex flex-row justify-evenly gap-6
+                px-4 my-6 
+                text-beige"
+            >
             {/* MAPPING: rendering each "card" from NavMenuItems */}
             {NavMenuItems.map((card, index) => (
                 <div
@@ -20,7 +25,6 @@ function NavCards() {
                     onClick={() => handleActiveCard(index)}
                     className={`
                         flex flex-col items-center p-2
-                        text-beige 
                         text-2xl md:text-4xl
                         cursor-pointer 
                         transform transition-transform duration-300 ease-in-out
@@ -28,7 +32,7 @@ function NavCards() {
                     `}
                 >
                     {/* SHADOW: glow effect on active card */}
-                    <span 
+                    <span
                         className={`
                             ${selectedCard === index && "fill-beige drop-shadow-md drop-shadow-beige/20"}
                         `}
@@ -37,7 +41,7 @@ function NavCards() {
                     </span>
                     {/* ANIMATION: pulse on active card */}
                     {selectedCard === index && (
-                        <div 
+                        <div
                             className={`
                                 mt-1 w-2 h-1 rounded-full bg-beige ${selectedCard === index && `${card.color} animate-pulse`}
                             `}

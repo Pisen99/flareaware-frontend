@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+import NavCards from './components/NavCards';
 import Calendar from './components/Calendar';
 import SelectionsCard from './components/SelectionsCard';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className='bg-gray-900'>
       <Header />
-      <Navbar />
+      <NavCards />
       <Calendar />
       <SelectionsCard />
     </div>
