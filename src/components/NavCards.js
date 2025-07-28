@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import NavMenuItems from "../data/NavMenuItems";
+import NavItems from "../data/NavItems";
 
 function NavCards() {
     const [selectedCard, setSelectedCard] = useState(1);
@@ -14,12 +14,12 @@ function NavCards() {
         // CONTAINER: cards
         <div 
             className="
-                flex flex-row justify-evenly gap-6
+                flex flex-row justify-evenly gap-6 md:px-16
                 px-4 my-6 
                 text-beige"
             >
             {/* MAPPING: rendering each "card" from NavMenuItems */}
-            {NavMenuItems.map((card, index) => (
+            {NavItems.map((card, index) => (
                 <div
                     key={index}
                     onClick={() => handleActiveCard(index)}
@@ -28,7 +28,7 @@ function NavCards() {
                         text-2xl md:text-4xl
                         cursor-pointer 
                         transform transition-transform duration-300 ease-in-out
-                        ${selectedCard === index ? `scale-150` : ""}
+                        ${selectedCard === index ? "scale-150" : ""}
                     `}
                 >
                     {/* SHADOW: glow effect on active card */}

@@ -1,6 +1,6 @@
 import Icons from "../components/Icons";
 
-const NavMenuItems = [
+const NavItems = [
     {
         symbol: Icons.symbols.toilet,
         color: "bg-orange",
@@ -15,4 +15,4 @@ const NavMenuItems = [
     },
 ];
 
-export default NavMenuItems;
+export default NavItems;
