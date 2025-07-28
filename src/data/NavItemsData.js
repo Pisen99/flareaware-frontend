@@ -1,18 +1,18 @@
 import Icons from "../components/Icons";
 
-const NavItems = [
+const NavItemsData = [
     {
-        symbol: Icons.symbols.toilet,
+        icon: Icons.symbols.toilet,
         color: "bg-orange",
     },
     {
-        symbol: Icons.symbols.home,
+        icon: Icons.symbols.home,
         color: "bg-red-400",
     },
     {
-        symbol: Icons.symbols.food,
+        icon: Icons.symbols.food,
         color: "bg-green",
     },
 ];
 
-export default NavItems;
+export default NavItemsData;

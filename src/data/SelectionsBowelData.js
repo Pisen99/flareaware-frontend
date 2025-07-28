@@ -1,4 +1,4 @@
-const SelectionsBowel = [
+const SelectionsBowelData = [
     {
         title: "consistency",
         items: ["hard", "solid", "creamy", "lumpy", "liquid"]
@@ -27,4 +27,4 @@ const SelectionsBowel = [
     }
 ];
 
-export default SelectionsBowel;
+export default SelectionsBowelData;

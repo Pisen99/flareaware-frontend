@@ -1,4 +1,4 @@
-const SelectionsFood = [
+const SelectionsFoodData = [
     {
         title: "consistency",
         items: ["solid", "boiled", "liquid"]
@@ -13,4 +13,4 @@ const SelectionsFood = [
     }
 ];
 
-export default SelectionsFood;
+export default SelectionsFoodData;

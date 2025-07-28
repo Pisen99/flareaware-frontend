@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import NavItems from "../data/NavItems";
+import NavItemsData from "../data/NavItemsData";
 
 function NavCards() {
     const [selectedCard, setSelectedCard] = useState(1);
@@ -18,8 +18,8 @@ function NavCards() {
                 px-4 my-6 
                 text-beige"
             >
-            {/* MAPPING: rendering each "card" from NavMenuItems */}
-            {NavItems.map((card, index) => (
+            {/* MAPPING: rendering each "card" from NavMenuItemsData */}
+            {NavItemsData.map((card, index) => (
                 <div
                     key={index}
                     onClick={() => handleActiveCard(index)}
@@ -37,7 +37,7 @@ function NavCards() {
                             ${selectedCard === index && "fill-beige drop-shadow-md drop-shadow-beige/20"}
                         `}
                     >
-                        {card.symbol}
+                        {card.icon}
                     </span>
                     {/* ANIMATION: pulse on active card */}
                     {selectedCard === index && (

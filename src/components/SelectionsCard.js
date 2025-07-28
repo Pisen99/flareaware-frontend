@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Icons from "./Icons";
-import SelectionsFood from "../data/SelectionsFood";
+import SelectionsFoodData from "../data/SelectionsFoodData";
 
 function SelectionsCard() {
-    // State: Index of the currently selected category in FoodLogSelections
+    // State: Index of the currently selected category in FoodLogSelectionsData
     const [index, setIndex] = useState(0);
     // State: Direction of animation (1 for forward, -1 for backward)
     // Used to determine the direction of the slide transition
     const [direction, setDirection] = useState(0);
 
     // Get the currently selected item based on the index
-    const selection = SelectionsFood[index];
+    const selection = SelectionsFoodData[index];
 
     // Handler: Move to the next category
     // Sets direction to 1 (next) & loops back to 0 after the last item
     const handleNext = () => {
         setDirection(1);
-        setIndex((prev) => (prev + 1) % SelectionsFood.length);
+        setIndex((prev) => (prev + 1) % SelectionsFoodData.length);
     };
 
     // Handler: Move to the prev category
@@ -25,7 +25,7 @@ function SelectionsCard() {
     const handlePrev = () => {
         setDirection(-1);
         setIndex((prev) =>
-            prev === 0 ? SelectionsFood.length - 1 : prev - 1
+            prev === 0 ? SelectionsFoodData.length - 1 : prev - 1
         );
     };
 
