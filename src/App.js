@@ -7,11 +7,11 @@ import SelectionsCard from './components/SelectionsCard';
 function App() {
 
   return (
-    <div className='bg-gray-900'>
+    <div>
       <Header />
-      <NavCards />
       <Calendar />
       <SelectionsCard />
+      <NavCards />
     </div>
   );
 }

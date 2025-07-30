@@ -2,6 +2,10 @@
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
 
+body {
+  background-color: #111828;
+}
+
 @theme {
     --color-beige: oklch(0.9636 0.0328 107);
     --color-orange: oklch(0.6441 0.1263 54.28);

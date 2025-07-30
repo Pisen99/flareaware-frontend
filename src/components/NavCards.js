@@ -29,8 +29,10 @@ function NavCards() {
         // CONTAINER: cards
         <div 
             className="
-                flex flex-row justify-evenly gap-6 md:px-16
-                px-4 my-6 
+                flex flex-row justify-center gap-10
+                md:gap-30 lg:justify-evenly
+                py-2
+                bg-gray-900/30 backdrop-blur-lg drop-shadow-md rounded-full
                 text-beige"
             >
             {/* MAPPING: rendering each "card" from NavMenuItemsData */}
