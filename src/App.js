@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import NavCards from './components/NavCards';
+import Navbar from './components/Navbar';
 import Calendar from './components/Calendar';
 import SelectionsCard from './components/SelectionsCard';
 
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Calendar />
       <SelectionsCard />
-      <NavCards />
+      <Navbar />
     </div>
   );
 }
