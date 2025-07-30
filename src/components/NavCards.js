@@ -30,10 +30,10 @@ function NavCards() {
         <div 
             className="
                 flex flex-row justify-center gap-10
-                py-2
+                py-2 px-4
                 bg-gray-900/30 backdrop-blur-lg drop-shadow-md rounded-full
                 text-beige"
-            >
+        >
             {/* MAPPING: rendering each "card" from NavMenuItemsData */}
             {navItems.map((card, index) => (
                 <div

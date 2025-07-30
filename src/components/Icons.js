@@ -1,4 +1,5 @@
-import { FaArrowDown } from "react-icons/fa6";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosAddCircle } from "react-icons/io";
@@ -15,7 +16,8 @@ import { FaToiletPaper } from "react-icons/fa";
 
 const Icons = {
     arrows: {
-        down: <FaArrowDown />,
+        down: <IoIosArrowDown />,
+        up: <IoIosArrowUp />,
         prev: <IoIosArrowBack />,
         next: <IoIosArrowForward />
     },
