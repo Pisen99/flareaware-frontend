@@ -3,7 +3,6 @@ import AnimationOrb from "./AnimationOrb";
 import AnimationTyping from "./AnimationTyping";
 import AnimationLogo from "./AnimationLogo";
 import HeroActions from "./HeroActions";
-import { delay } from "framer-motion";
 
 function Header() {
 
