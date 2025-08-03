@@ -11,8 +11,7 @@ import { TbSoupFilled } from "react-icons/tb";
 import { GiStomach } from "react-icons/gi";
 import { BsInfoLg } from "react-icons/bs";
 import { BiSolidHomeHeart } from "react-icons/bi";
-import { FaToiletPaper } from "react-icons/fa";
-
+import { FaToilet } from "react-icons/fa";
 
 const Icons = {
     arrows: {
@@ -29,7 +28,7 @@ const Icons = {
         bowel: <GiStomach />,
         info: <BsInfoLg />,
         home: <BiSolidHomeHeart />,
-        toilet: <FaToiletPaper />,
+        toilet: <FaToilet />,
     },
     rank: {
         pain: <BsFire />,

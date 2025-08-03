@@ -29,10 +29,10 @@ function NavCards() {
         // CONTAINER: cards
         <div 
             className="
-                flex flex-row justify-center gap-10
-                py-2 px-4
+                flex flex-row justify-center gap-10 
+                py-1 px-4 md:px-5
                 bg-gray-900/30 backdrop-blur-lg drop-shadow-md rounded-full
-                text-beige"
+                text-beige/50 border border-beige/10"
         >
             {/* MAPPING: rendering each "card" from NavMenuItemsData */}
             {navItems.map((card, index) => (
@@ -44,7 +44,7 @@ function NavCards() {
                         text-2xl md:text-4xl
                         cursor-pointer 
                         transform transition-transform duration-300 ease-in-out
-                        ${selectedCard === index ? "scale-150" : "scale-100"}
+                        ${selectedCard === index ? "scale-125 text-beige" : "scale-100"}
                     `}
                 >
                     {/* SHADOW: glow effect on active card */}
@@ -57,11 +57,7 @@ function NavCards() {
                     </span>
                     {/* ANIMATION: pulse on active card */}
                     {selectedCard === index && (
-                        <div
-                            className={`
-                                mt-1 w-2 h-1 rounded-full bg-beige ${selectedCard === index && `${card.color} animate-pulse`}
-                            `}
-                        />
+                        <div className={`mt-1 w-2 h-1 rounded-full ${card.color} animate-pulse`}/>
                     )}
                 </div>
             ))}
