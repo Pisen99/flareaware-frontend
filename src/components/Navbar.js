@@ -1,12 +1,10 @@
 import React from "react";
-import NavCards from "./NavCards";
+import NavToggle from "./NavToggle";
 
 function Navbar() {
     return (
         <div className="sticky bottom-1 flex justify-center">
-            <div>
-                <NavCards />
-            </div>
+            <NavToggle/>
         </div>
     )
 };
