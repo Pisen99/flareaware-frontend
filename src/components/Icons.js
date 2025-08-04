@@ -12,6 +12,7 @@ import { GiStomach } from "react-icons/gi";
 import { BsInfoLg } from "react-icons/bs";
 import { BiSolidHomeHeart } from "react-icons/bi";
 import { FaToilet } from "react-icons/fa";
+import { VscLocation } from "react-icons/vsc";
 
 const Icons = {
     arrows: {
@@ -21,6 +22,7 @@ const Icons = {
         next: <IoIosArrowForward />
     },
     symbols: {
+        location: <VscLocation />,
         add: <IoIosAddCircle />,
         heart: <FaHeart />,
         list: <CiViewList />,

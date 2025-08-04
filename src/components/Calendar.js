@@ -47,7 +47,7 @@ function Calendar() {
             {selectedDay && (
                 <div
                     className="
-                    flex flex-row justify-center text-center gap-4
+                    flex flex-row justify-center items-center text-center gap-4
                     text-beige
                     py-4
                     md:py-6
