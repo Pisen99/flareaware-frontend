@@ -1,13 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import Icons from "./Icons";
 import moment from "moment";
+import Icons from "./Icons";
 
 function Cal() {
-    const [currentMonth, setCurrentMonth] = useState(moment().startOf("month"));
+    // ---------------------------
+    // Imports & State
+    // ---------------------------
+    const [currentMonth, setCurrentMonth] = useState(
+        moment().startOf("month") // Start at the first day of the current month
+    );
+    const today = moment(); // Current date & time
+    const dayRefs = useRef([]); // Array of DOM refs for each day element
 
-    const today = moment();
-    const dayRefs = useRef([]);
-
+    // ---------------------------
+    // Utility: Generate all days for a given month
+    // ---------------------------
     const daysInMonth = (month) => {
         const startOfMonth = currentMonth.clone().startOf("month");
         const endOfMonth = currentMonth.clone().endOf("month");
@@ -16,11 +23,11 @@ function Cal() {
         let day = startOfMonth.clone();
         while (day.isSameOrBefore(endOfMonth, "day")) {
             days.push({
-                dayLabel: day.format("dd")[0],   // Ex: "M"
-                fullDayLabel: day.format("dddd"),
-                dateLabel: day.date(),           // Ex: "28"
-                monthLabel: day.format("MMMM"),  // Ex: "June"
-                yearLabel: day.year(),           // Ex: "2025"
+                dayLabel: day.format("dd")[0],      // Ex: "M"
+                fullDayLabel: day.format("dddd"),   // Ex: "Monday"
+                dateLabel: day.date(),              // Ex: "28"
+                monthLabel: day.format("MMMM"),     // Ex: "June"
+                yearLabel: day.year(),              // Ex: "2025"
                 currentDay: day.isSame(today, "day") // true if it's today
             });
             day.add(1, "day");
@@ -28,58 +35,74 @@ function Cal() {
         return days;
     }
 
+    // ---------------------------
+    // Derived Data
+    // ---------------------------
     const days = daysInMonth(currentMonth);
-    const todayIndex = days.findIndex((d,) => d.currentDay);
+    const todayIndex = days.findIndex((d,) => d.currentDay); // Index of today's date in "days"
 
+    // Initialize selected card to today's index
+    useEffect(() => {
+        if (todayIndex !== -1) {
+            setSelectedCard(todayIndex);
+        }
+    }, [todayIndex]);
+
+    // ---------------------------
+    // Auto-scroll to today on month change
+    // ---------------------------
     useEffect(() => {
         if (todayIndex !== -1 && dayRefs.current[todayIndex]) {
             dayRefs.current[todayIndex].scrollIntoView({
                 behavior: "smooth",
                 inline: "center",
                 block: "nearest",
-            })
+            });
         }
     }, [currentMonth]);
 
-    const [selectedCard, setSelectedCard] = useState(todayIndex);
-
+    // ---------------------------
+    // Handlers
+    // ---------------------------
+    const [selectedCard, setSelectedCard] = useState(todayIndex); // State here due to order conflict if its higher up in
     const handleActiveCard = (i) => {
-        setSelectedCard(i)
+        setSelectedCard(i);
     };
 
+    // ---------------------------
+    // Label for Selected Day
+    // ---------------------------
     const selectedDay = days[selectedCard];
-
     let label = "";
-    if(selectedDay) {
+
+    if (selectedDay) {
         const selectedDate = currentMonth.clone().date(selectedDay.dateLabel).startOf('day');
         const todayMidnight = moment().startOf('day');
         const diff = selectedDate.diff(todayMidnight, "days");
-        
-        if(diff === -2) {
-            label = "Day before yesterday";
-        } else if(diff === -1) {
-            label = "Yesterday";
-        } else if(diff === 0) {
-            label = "Today";
-        } else if(diff === 1) {
-            label = "Tomorrow";
-        } else if(diff === 2) {
-            label = "Day after tomorrow";
-        } else {
-            label = "";
-        }
-    }
+
+        if (diff === -2) label = "Day before yesterday";
+        else if (diff === -1) label = "Yesterday";
+        else if (diff === 0) label = "Today";
+        else if (diff === 1) label = "Tomorrow";
+        else if (diff === 2) label = "Day after tomorrow";
+        else label = "";
+    };
+
+    // ---------------------------
+    // Debug Logs
+    // ---------------------------
+    console.log(todayIndex);
 
     return (
         <div
             className="
-            flex flex-col gap-8
+            flex flex-col gap-4
             bg-gray-700/20
             border-gray-500/20 border-y 
-            pt-10 pb-2"
+            py-8"
         >
             {selectedDay && (
-                // {/* Dates */}
+                // Dates 
                 <div
                     className="
                     w-full
@@ -100,7 +123,17 @@ function Cal() {
                     {/* <span className="text-xl text-beige/60 mt-4">{Icons.symbols.location}</span> */}
                 </div>
             )}
-            
+            {/* Navigations */}
+            <div className="w-full flex flex-row justify-between text-beige/30" >
+                <div className="opacity-0 flex items-center justify-start gap-2">
+                    <span className="text-xl">{Icons.arrows.prev}</span>
+                    <p className="text-sm font-semibold text-beige/20">Feb</p>
+                </div>
+                <div className="opacity-0 flex items-center justify-end gap-2">
+                    <p className="text-sm font-semibold text-beige/20">Mar</p>
+                    <span className="text-xl">{Icons.arrows.next}</span>
+                </div>
+            </div>
 
             {/* Calendar grid */}
             <div className="overflow-x-auto bg-gray-800 py-4 px-2">
@@ -128,17 +161,7 @@ function Cal() {
                 </div>
             </div>
 
-            {/* Calendar Navigations */}
-            <div className="invisible w-full flex flex-row justify-between text-beige/30">
-                <div className="flex items-center justify-start gap-2">
-                    <span className="text-xl">{Icons.arrows.prev}</span>
-                    <p className="text-sm font-semibold text-beige/20">Feb</p>
-                </div>
-                <div className="flex items-center justify-end gap-2">
-                    <p className="text-sm font-semibold text-beige/20">Mar</p>
-                    <span className="text-xl">{Icons.arrows.next}</span>
-                </div>
-            </div>
+
         </div>
     )
 };
