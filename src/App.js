@@ -1,17 +1,15 @@
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import Calendar from './components/Calendar';
 import SelectionsCard from './components/SelectionsCard';
-import Cal from './components/Cal';
+import CalTwo from './components/CalTwo';
 
 function App() {
 
   return (
     <div>
       <Header />
-      <Cal />
-      {/* <Calendar /> */}
+      <CalTwo />
       <SelectionsCard />
       <Navbar />
     </div>

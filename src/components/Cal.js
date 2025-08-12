@@ -91,7 +91,7 @@ function Cal() {
     // ---------------------------
     // Debug Logs
     // ---------------------------
-    console.log(todayIndex);
+    // console.log(todayIndex);
 
     return (
         <div
@@ -160,8 +160,6 @@ function Cal() {
                     ))}
                 </div>
             </div>
-
-
         </div>
     )
 };
