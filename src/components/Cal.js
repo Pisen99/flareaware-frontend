@@ -86,7 +86,7 @@ function Cal() {
         else if (diff === 0) label = "Today";
         else if (diff === 1) label = "Tomorrow";
         else if (diff === 2) label = "Day after tomorrow";
-        else label = "";
+        else label = "Date";
     };
 
     // ---------------------------
@@ -97,30 +97,31 @@ function Cal() {
         <div
             className="
             flex flex-col gap-4
+            lg:mx-60 lg:py-20 lg:rounded-2xl
             py-8"
         >
-            {selectedDay && (
-                // Dates 
-                <div
-                    className="
-                    w-full
-                    flex flex-col items-center gap-2
-                    text-beige/30
-                    text-md font-medium"
-                >
-                    <p
-                        className={`
-                        bg-indigo-500/30 py-1 px-2 rounded-full
-                        transition-opacity duration-200
-                        ${label ? "visible opacity-100" : "invisible opacity-0"}
-                        `}
+            <div className="self-center inline-block w-max bg-gray-800/15 py-4 px-6 rounded-xl">
+                {selectedDay && (
+                    // Dates 
+                    <div
+                        className="
+                        flex flex-col items-center gap-2
+                        text-beige/30
+                        text-base font-medium
+                        min-w-[200px]
+                        md:text-xl"
                     >
-                        {label || "Placeholder"}
-                    </p>
-                    <p>{selectedDay.fullDayLabel}: {selectedDay.dateLabel}</p>
-                    {/* <span className="text-xl text-beige/60 mt-4">{Icons.symbols.location}</span> */}
-                </div>
-            )}
+                        <p
+                            className="bg-indigo-500/30 py-1 px-2 rounded-full"
+                        >
+                            {label}
+                        </p>
+                        <p>{selectedDay.fullDayLabel}: {selectedDay.dateLabel}</p>
+                        {/* <span className="text-xl text-beige/60 mt-4">{Icons.symbols.location}</span> */}
+                    </div>
+                )}
+            </div>
+            
 
             {/* Navigations */}
             <div className="w-full flex flex-row justify-between text-beige/30" >
@@ -135,7 +136,7 @@ function Cal() {
             </div>
 
             {/* Calendar grid */}
-            <div className="overflow-x-auto py-4 px-2">
+            <div className="overflow-x-auto py-4">
                 <div className="flex space-x-2 min-w-max">
                     {days.map((day, i) => (
                         <div
@@ -149,11 +150,11 @@ function Cal() {
                             text-gray-500
                             transition-transform duration-200 ease-in-out
                             ${day.currentDay ? "bg-indigo-500/30" : ""}
-                            ${selectedCard === i ? "scale-110 border border-indigo-500" : "scale-100"}
+                            ${selectedCard === i ? "scale-110 border border-indigo-500" : "scale-100 inset-shadow-all/30"}
                             `}
                         >
-                            <p className="text-sm">{day.dayLabel}</p>
-                            <p className="text-md font-semibold">{day.dateLabel}</p>
+                            <p className="text-sm md:text-lg">{day.dayLabel}</p>
+                            <p className="text-base md:text-xl font-semibold">{day.dateLabel}</p>
                             {/* Symbol here */}
                         </div>
                     ))}

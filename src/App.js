@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import SelectionsCard from './components/SelectionsCard';
+// import SelectionsCard from './components/SelectionsCard';
 import Cal from './components/Cal';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div>
       <Header />
       <Cal />
-      <SelectionsCard />
+      {/* <SelectionsCard /> */}
       <Navbar />
     </div>
   );
