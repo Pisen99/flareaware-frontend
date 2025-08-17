@@ -22,11 +22,17 @@ function Cal() {
 
         let day = startOfMonth.clone();
         while (day.isSameOrBefore(endOfMonth, "day")) {
+            const dayNumber = day.date();
+            let ordinal = "th";
+            if (dayNumber === 1 || dayNumber === 21 || dayNumber === 31) ordinal = "st";
+            else if (dayNumber === 2 || dayNumber === 22) ordinal = "nd";
+            else if (dayNumber === 3 || dayNumber === 23) ordinal = "rd";
+
             days.push({
                 dayLabel: day.format("dd")[0],      // Ex: "M"
                 fullDayLabel: day.format("dddd"),   // Ex: "Monday"
-                dateOrdinalLabel: day.format("Do"),
-                dateLabel: day.date(),              // Ex: "28"
+                dateOrdinalLabel: ordinal,          // Ex: "th, st, nd, rd"
+                dateLabel: dayNumber,               // Ex: "28"
                 monthLabel: day.format("MMMM"),     // Ex: "June"
                 yearLabel: day.year(),              // Ex: "2025"
                 currentDay: day.isSame(today, "day") // true if it's today
@@ -100,23 +106,31 @@ function Cal() {
             lg:mx-60 lg:py-20 lg:rounded-2xl
             py-8"
         >
-            <div className="self-center inline-block w-max bg-gray-800/15 py-4 px-6 rounded-xl">
+            <div 
+                className="
+                w-max self-center inline-block 
+                bg-gray-800/20 rounded-xl
+                p-6 
+                md:p-10 lg:px-14
+                border border-indigo-400 
+                inset-shadow-all-indigo-in shadow-all-indigo-out 
+                animate-shadow-pulse"
+            >
                 {selectedDay && (
                     // Dates 
                     <div
                         className="
                         flex flex-col items-center gap-2
-                        text-beige/30
                         text-base font-medium
-                        min-w-[200px]
-                        md:text-xl"
+                        min-w-[200px] md:min-w-[250px] lg:min-w-[280px]
+                        md:text-2xl"
                     >
                         <p
-                            className="bg-indigo-500/30 py-1 px-2 rounded-full"
+                            className="bg-indigo-500/30 py-1 px-3 md:px-4 rounded-full text-indigo-400"
                         >
                             {label}
                         </p>
-                        <p>{selectedDay.fullDayLabel}: {selectedDay.dateLabel}</p>
+                        <p className="text-beige/30">{selectedDay.fullDayLabel} {selectedDay.dateLabel}<span className="text-xs md:text-sm align-super ml-1">{selectedDay.dateOrdinalLabel}</span></p>
                         {/* <span className="text-xl text-beige/60 mt-4">{Icons.symbols.location}</span> */}
                     </div>
                 )}
@@ -136,29 +150,37 @@ function Cal() {
             </div>
 
             {/* Calendar grid */}
-            <div className="overflow-x-auto py-4">
-                <div className="flex space-x-2 min-w-max">
-                    {days.map((day, i) => (
-                        <div
-                            ref={(el) => (dayRefs.current[i] = el)}
-                            key={i}
-                            onClick={() => handleActiveCard(i)}
-                            className={`
-                            flex flex-col items-center gap-1
-                            bg-gray-600/30 rounded-lg
-                            px-4 py-2
-                            text-gray-500
-                            transition-transform duration-200 ease-in-out
-                            ${day.currentDay ? "bg-indigo-500/30" : ""}
-                            ${selectedCard === i ? "scale-110 border border-indigo-500" : "scale-100 inset-shadow-all/30"}
-                            `}
-                        >
-                            <p className="text-sm md:text-lg">{day.dayLabel}</p>
-                            <p className="text-base md:text-xl font-semibold">{day.dateLabel}</p>
-                            {/* Symbol here */}
-                        </div>
-                    ))}
-                </div>
+            <div className="relative py-4">
+                <div className="overflow-x-auto py-4 px-4">
+                    <div className="flex space-x-2 min-w-max">
+                        {days.map((day, i) => (
+                            <div
+                                ref={(el) => (dayRefs.current[i] = el)}
+                                key={i}
+                                onClick={() => handleActiveCard(i)}
+                                className={`
+                                flex flex-col items-center gap-1
+                                bg-gray-600/30 rounded-lg
+                                w-14 h-20
+                                px-4 py-2
+                                text-gray-500
+                                transition-transform duration-200 ease-in-out
+                                ${day.currentDay ? "bg-indigo-500/30" : ""}
+                                ${selectedCard === i ? "scale-110 border border-indigo-400" : "scale-100 inset-shadow-all/30"}
+                                `}
+                            >
+                                <p className="text-sm md:text-lg truncate">{day.dayLabel}</p>
+                                <p className="text-base md:text-xl font-semibold">{day.dateLabel}</p>
+                                {/* Symbol here */}
+                            </div>
+                        ))}
+                    </div>
+                </div> 
+                {/* Left fade */}
+                <div className="pointer-events-none absolute top-0 left-0 h-full w-12 bg-gradient-to-r from-[#111828] to-transparent"></div>
+
+                {/* Right fade */}
+                <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-[#111828] to-transparent"></div>
             </div>
         </div>
     )

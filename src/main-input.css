@@ -16,6 +16,8 @@ body {
 
   --inset-shadow-md: inset 0 2px 3px oklch(0 0 0 / 25%);
   --inset-shadow-all: inset 0 0 10px oklch(0.18 0 0 / 65%);
+  --inset-shadow-all-indigo-in: inset 0 0 15px oklch(58.5% 0.233 277.117);
+  --shadow-all-indigo-out: 0 0 20px oklch(58.5% 0.233 277.117);
 }
 
 @layer utilities {
@@ -26,6 +28,40 @@ body {
   /* New utility for the uniform all-sides shadow */
   .shadow-inset-all {
     box-shadow: var(--inset-shadow-all);
+  }
+
+  .shadow-indigo-in {
+    box-shadow: var(--inset-shadow-all-indigo-in);
+  }
+  
+  .shadow-indigo-out {
+    box-shadow: var(--shadow-all-indigo-out);
+  }
+
+  @keyframes shadow-pulse {
+    0%, 100% {
+      box-shadow: var(--inset-shadow-all-indigo-in), var(--shadow-all-indigo-out);
+    }
+    50% {
+      box-shadow: var(--inset-shadow-all-indigo-in), 0 0 25px oklch(58.5% 0.233 277.117 / 65%);
+    }
+  }
+
+  .animate-shadow-pulse {
+    animation: shadow-pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes floaty {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px); /* tiny lift */
+    }
+  }
+
+  .animate-floaty {
+    animation: floaty 4s ease-in-out infinite;
   }
 
   @keyframes grow-in {
