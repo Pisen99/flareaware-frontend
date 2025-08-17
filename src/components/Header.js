@@ -11,7 +11,7 @@ function Header() {
             <AnimationOrb
                 hoverIntensity={0.5}    // How strong the wave-y distortion is on hover
                 rotateOnHover={true}    // Whether the background rotates when hovered
-                hue={179}                 // Base hue shift (0 means default color palette)
+                hue={360}                 // Base hue shift (0 means default color palette)
                 forceHoverState={false} // When true, hover is always "on"
             />
             {/* SECTION: Logo */}

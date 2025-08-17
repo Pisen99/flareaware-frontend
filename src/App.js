@@ -2,14 +2,14 @@ import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import SelectionsCard from './components/SelectionsCard';
-import CalTwo from './components/CalTwo';
+import Cal from './components/Cal';
 
 function App() {
 
   return (
     <div>
       <Header />
-      <CalTwo />
+      <Cal />
       <SelectionsCard />
       <Navbar />
     </div>

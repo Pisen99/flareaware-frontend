@@ -25,6 +25,7 @@ function Cal() {
             days.push({
                 dayLabel: day.format("dd")[0],      // Ex: "M"
                 fullDayLabel: day.format("dddd"),   // Ex: "Monday"
+                dateOrdinalLabel: day.format("Do"),
                 dateLabel: day.date(),              // Ex: "28"
                 monthLabel: day.format("MMMM"),     // Ex: "June"
                 yearLabel: day.year(),              // Ex: "2025"
@@ -91,14 +92,11 @@ function Cal() {
     // ---------------------------
     // Debug Logs
     // ---------------------------
-    // console.log(todayIndex);
 
     return (
         <div
             className="
             flex flex-col gap-4
-            bg-gray-700/20
-            border-gray-500/20 border-y 
             py-8"
         >
             {selectedDay && (
@@ -112,7 +110,7 @@ function Cal() {
                 >
                     <p
                         className={`
-                        bg-gray-600/30 py-1 px-2 rounded-full
+                        bg-indigo-500/30 py-1 px-2 rounded-full
                         transition-opacity duration-200
                         ${label ? "visible opacity-100" : "invisible opacity-0"}
                         `}
@@ -123,6 +121,7 @@ function Cal() {
                     {/* <span className="text-xl text-beige/60 mt-4">{Icons.symbols.location}</span> */}
                 </div>
             )}
+
             {/* Navigations */}
             <div className="w-full flex flex-row justify-between text-beige/30" >
                 <div className="opacity-0 flex items-center justify-start gap-2">
@@ -136,7 +135,7 @@ function Cal() {
             </div>
 
             {/* Calendar grid */}
-            <div className="overflow-x-auto bg-gray-800 py-4 px-2">
+            <div className="overflow-x-auto py-4 px-2">
                 <div className="flex space-x-2 min-w-max">
                     {days.map((day, i) => (
                         <div
@@ -149,8 +148,8 @@ function Cal() {
                             px-4 py-2
                             text-gray-500
                             transition-transform duration-200 ease-in-out
-                            ${day.currentDay ? "border border-indigo-500" : ""}
-                            ${selectedCard === i ? "scale-110" : "scale-100"}
+                            ${day.currentDay ? "bg-indigo-500/30" : ""}
+                            ${selectedCard === i ? "scale-110 border border-indigo-500" : "scale-100"}
                             `}
                         >
                             <p className="text-sm">{day.dayLabel}</p>

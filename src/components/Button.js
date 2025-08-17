@@ -46,15 +46,15 @@ function Button({
             active:scale-95
         `),
         secondary: clsx(`
-            bg-green/30
-            text-green
-            shadow-green/50 shadow-md 
-            border-green
+            bg-indigo-500/30
+            text-indigo-500
+            shadow-indigo-500/50 shadow-md 
+            border-indigo-500
 
             backdrop-blur-md
             duration-300 ease-in-out
 
-            hover:bg-green/60
+            hover:bg-indigo-500/60
             hover:shadow-md
             hover:-translate-y-1 hover:scale-100
             

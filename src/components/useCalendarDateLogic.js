@@ -5,6 +5,9 @@ export default function useCalendarDateLogic() {
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const today = new Date();
 
+    // ---------------------------
+    // Info about a single date
+    // ---------------------------
     const getDateInfo = (date) => ({
         weekday: format(date, "iiii"),         // "Monday"
         weekdayShort: format(date, "iiiii"),   // "M"
@@ -12,11 +15,10 @@ export default function useCalendarDateLogic() {
         isoDay: format(date, "d"),             // 18 (ISO day number, Mon=1..Sun=7)
         monthAbbr: format(date, "LLL"),        // "Aug"
         year: format(date, "y"),               // "2025"
-        currentDay: "nothing for now"
     });
 
     // ---------------------------
-    // Generating all days in current month
+    // All days in the current month
     // ---------------------------
     const getMonthDays = (date) => {
         const start = startOfMonth(date);
