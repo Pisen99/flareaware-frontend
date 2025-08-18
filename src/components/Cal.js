@@ -10,7 +10,9 @@ function Cal() {
         moment().startOf("month") // Start at the first day of the current month
     );
     const today = moment(); // Current date & time
+    
     const dayRefs = useRef([]); // Array of DOM refs for each day element
+    const scrollRef = useRef(null);
 
     // ---------------------------
     // Utility: Generate all days for a given month
@@ -34,6 +36,7 @@ function Cal() {
                 dateOrdinalLabel: ordinal,          // Ex: "th, st, nd, rd"
                 dateLabel: dayNumber,               // Ex: "28"
                 monthLabel: day.format("MMMM"),     // Ex: "June"
+                shortMonthLabel: day.format("MMM"), // Ex: "Jun"
                 yearLabel: day.year(),              // Ex: "2025"
                 currentDay: day.isSame(today, "day") // true if it's today
             });
@@ -95,6 +98,18 @@ function Cal() {
         else label = "Date";
     };
 
+    // Above the return
+    const handlePrevMonth = () => {
+        setCurrentMonth(currentMonth.clone().subtract(1, "month"));
+    };
+
+    const handleNextMonth = () => {
+        setCurrentMonth(currentMonth.clone().add(1, "month"));
+    };
+
+    const prevMonthLabel = currentMonth.clone().subtract(1, "month").format("MMM");
+    const nextMonthLabel = currentMonth.clone().add(1, "month").format("MMM");
+
     // ---------------------------
     // Debug Logs
     // ---------------------------
@@ -106,6 +121,7 @@ function Cal() {
             lg:mx-60 lg:py-20 lg:rounded-2xl
             py-8"
         >
+            {/* Info */}
             <div 
                 className="
                 w-max self-center inline-block 
@@ -117,7 +133,6 @@ function Cal() {
                 animate-shadow-pulse"
             >
                 {selectedDay && (
-                    // Dates 
                     <div
                         className="
                         flex flex-col items-center gap-2
@@ -136,21 +151,20 @@ function Cal() {
                 )}
             </div>
             
-
             {/* Navigations */}
-            <div className="w-full flex flex-row justify-between text-beige/30" >
-                <div className="opacity-0 flex items-center justify-start gap-2">
+            <div className="w-full flex flex-row justify-between pt-4 text-beige/30" >
+                <div className="flex items-center justify-start gap-2" onClick={handlePrevMonth}>
                     <span className="text-xl">{Icons.arrows.prev}</span>
-                    <p className="text-sm font-semibold text-beige/20">Feb</p>
+                    <p className="text-sm font-semibold text-beige/20">{prevMonthLabel}</p>
                 </div>
-                <div className="opacity-0 flex items-center justify-end gap-2">
-                    <p className="text-sm font-semibold text-beige/20">Mar</p>
+                <div className="flex items-center justify-end gap-2" onClick={handleNextMonth}>
+                    <p className="text-sm font-semibold text-beige/20">{nextMonthLabel}</p>
                     <span className="text-xl">{Icons.arrows.next}</span>
                 </div>
             </div>
 
             {/* Calendar grid */}
-            <div className="relative py-4">
+            <div className="relative">
                 <div className="overflow-x-auto py-4 px-4">
                     <div className="flex space-x-2 min-w-max">
                         {days.map((day, i) => (
