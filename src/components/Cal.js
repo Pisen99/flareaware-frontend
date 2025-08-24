@@ -10,7 +10,7 @@ function Cal() {
         moment().startOf("month") // Start at the first day of the current month
     );
     const today = moment(); // Current date & time
-    
+
     const dayRefs = useRef([]); // Array of DOM refs for each day element
     const scrollRef = useRef(null);
 
@@ -95,10 +95,33 @@ function Cal() {
         else if (diff === 0) label = "Today";
         else if (diff === 1) label = "Tomorrow";
         else if (diff === 2) label = "Day after tomorrow";
-        else label = "Date";
+        else label = selectedDay.monthLabel;
     };
 
-    // Above the return
+    // const handleScroll = () => {
+    //     if (!scrollRef.current) return;
+
+    //     const scrollContainer = scrollRef.current;
+    //     const containerCenter = scrollContainer.scrollLeft + scrollContainer.offsetWidth / 2;
+
+    //     let closestIndex = 0;
+    //     let closestDistance = Infinity;
+
+    //     dayRefs.current.forEach((el, i) => {
+    //       if (!el) return;
+    //       const elCenter = el.offsetLeft + el.offsetWidth / 2;
+    //       const distance = Math.abs(containerCenter - elCenter);
+
+    //       if (distance < closestDistance) {
+    //         closestDistance = distance;
+    //         closestIndex = i;
+    //       }
+    //     });
+
+    //     setSelectedCard(closestIndex);
+    //   };
+
+
     const handlePrevMonth = () => {
         setCurrentMonth(currentMonth.clone().subtract(1, "month"));
     };
@@ -121,8 +144,8 @@ function Cal() {
             lg:mx-60 lg:py-20 lg:rounded-2xl
             py-8"
         >
-            {/* Info */}
-            <div 
+            {/* Info Card */}
+            <div
                 className="
                 w-max self-center inline-block 
                 bg-gray-800/20 rounded-xl
@@ -140,32 +163,29 @@ function Cal() {
                         min-w-[200px] md:min-w-[250px] lg:min-w-[280px]
                         md:text-2xl"
                     >
+                        {/* Labels */}
                         <p
                             className="bg-indigo-500/30 py-1 px-3 md:px-4 rounded-full text-indigo-400"
                         >
                             {label}
                         </p>
-                        <p className="text-beige/30">{selectedDay.fullDayLabel} {selectedDay.dateLabel}<span className="text-xs md:text-sm align-super ml-1">{selectedDay.dateOrdinalLabel}</span></p>
+
+                        {/* Full day & date */}
+                        <p className="text-beige/30">
+                            {selectedDay.fullDayLabel} {selectedDay.dateLabel}
+                            <span className="text-xs md:text-sm align-super ml-1">{selectedDay.dateOrdinalLabel}</span>
+                        </p>
                         {/* <span className="text-xl text-beige/60 mt-4">{Icons.symbols.location}</span> */}
                     </div>
                 )}
             </div>
-            
-            {/* Navigations */}
-            <div className="w-full flex flex-row justify-between pt-4 text-beige/30" >
-                <div className="flex items-center justify-start gap-2" onClick={handlePrevMonth}>
-                    <span className="text-xl">{Icons.arrows.prev}</span>
-                    <p className="text-sm font-semibold text-beige/20">{prevMonthLabel}</p>
-                </div>
-                <div className="flex items-center justify-end gap-2" onClick={handleNextMonth}>
-                    <p className="text-sm font-semibold text-beige/20">{nextMonthLabel}</p>
-                    <span className="text-xl">{Icons.arrows.next}</span>
-                </div>
-            </div>
 
             {/* Calendar grid */}
             <div className="relative">
-                <div className="overflow-x-auto py-4 px-4">
+
+                <div
+                    className="overflow-x-auto py-6 px-4"
+                >
                     <div className="flex space-x-2 min-w-max">
                         {days.map((day, i) => (
                             <div
@@ -178,6 +198,7 @@ function Cal() {
                                 w-14 h-20
                                 px-4 py-2
                                 text-gray-500
+                                cursor-pointer
                                 transition-transform duration-200 ease-in-out
                                 ${day.currentDay ? "bg-indigo-500/30" : ""}
                                 ${selectedCard === i ? "scale-110 border border-indigo-400" : "scale-100 inset-shadow-all/30"}
@@ -189,12 +210,30 @@ function Cal() {
                             </div>
                         ))}
                     </div>
-                </div> 
-                {/* Left fade */}
-                <div className="pointer-events-none absolute top-0 left-0 h-full w-12 bg-gradient-to-r from-[#111828] to-transparent"></div>
+                </div>
 
-                {/* Right fade */}
-                <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-[#111828] to-transparent"></div>
+                {/* Navigations */}
+                {/* Left fade + arrow */}
+                <div className="absolute top-0 left-0 h-full w-12 flex items-center justify-start">
+                    <div className="pointer-events-none absolute top-0 left-0 h-full w-12 bg-gradient-to-r from-[#111828] to-transparent"></div>
+                    <button
+                        onClick={handlePrevMonth}
+                        className="z-10 ml-1 text-3xl text-gray-700/40 hover:text-indigo-400 active:text-indigo-400 transition cursor-pointer"
+                    >
+                        {Icons.arrows.prevW}
+                    </button>
+                </div>
+
+                {/* Right fade + arrow */}
+                <div className="absolute top-0 right-0 h-full w-12 flex items-center justify-end">
+                    <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-[#111828] to-transparent"></div>
+                    <button
+                        onClick={handleNextMonth}
+                        className="z-10 mr-1 text-3xl text-gray-700/40 hover:text-indigo-400 active:text-indigo-400 transition cursor-pointer"
+                    >
+                        {Icons.arrows.nextW}
+                    </button>
+                </div>
             </div>
         </div>
     )
